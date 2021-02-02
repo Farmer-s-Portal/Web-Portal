@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /**
@@ -82,6 +83,9 @@ function LoginPage() {
         </button>
         <button onClick={resetHandler}>Reset</button>
       </form>
+      <p>
+        Don't have an account? <Link to="/signup">signup</Link>
+      </p>
     </Wrapper>
   );
 }
