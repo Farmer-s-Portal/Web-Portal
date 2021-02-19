@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import  SignUp  from "../components/Signup";
-function SignupPage() {
+import  OTPc  from "../components/OTP";
+function OTP() {
   return (
     <Wrapper>
-       <SignUp/>
+       <OTPc/>
     </Wrapper>
   );
 }
@@ -24,4 +24,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default SignupPage;
+export default OTP;
