@@ -1,34 +1,49 @@
 import React ,{useRef ,useState } from 'react'
 import styled from 'styled-components'
 import {Form, Card, Container} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import { Link,useHistory} from "react-router-dom";
 import { useUserContext } from "../contexts/user_context";
 
 const Signup=()=> {
     const numberRef=useRef();
+    const nameRef=useRef();
+    const history=useHistory();
     const [loading, setLoading] = useState(false)
-    const {signup}=useUserContext();
-    const handleSubmit=  (e)=>{
+    const {signup,currentUser}=useUserContext();
+
+
+ 
+    const handleSubmit= async (e)=>{
         e.preventDefault()
-    
-       
-            console.log("trying")
-           setLoading(true);
-           console.log("trying",numberRef.current.value)
-             signup(numberRef.current.value);
-        
-      
+       try {
+        console.log("trying")
+        setLoading(true);
+        console.log("trying",numberRef.current.value)
+        const num="+91"+numberRef.current.value
+        const name=nameRef.current.value
+        await  signup(num,name)
+        history.push('/');
+        console.log("user",currentUser)
+           
+                 
 
-
+       } catch (error) {
+            console.log("err",error)
+       }
     }
+
     return (
         <Wrapper>
+          
         <Card className="text-center contain">
+      
         <h2 className="text-center mb-4">Sign Up</h2>
          <Form className="text-center" onSubmit={handleSubmit}>
             <label>Phone</label>
             <input className="w-100" type="text" name="phone" ref={numberRef} placeholder="enter phone number" />
-            <button className=" btn" id='recaptcha-container' type="submit">Send OTP</button>
+            <label>Name</label>
+            <input className="w-100" type="text" name="name" ref={nameRef} placeholder="enter name" />
+            <button className=" btn" disabled={loading} id='recaptcha-container' type="submit">Send OTP</button>
        </Form>   
      
     </Card>

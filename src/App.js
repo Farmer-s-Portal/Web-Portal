@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home, Error, About, Login, Signup,OTP } from "./pages";
+import { Home, Error, About, Login, Signup } from "./pages";
 import { Navbar, Footer } from "./components";
 
 function App() {
@@ -24,9 +24,7 @@ function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/otp">
-          <OTP/>
-        </Route>
+        
         <Route path="*">
           <Error />
         </Route>
