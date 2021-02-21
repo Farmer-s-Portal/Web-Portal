@@ -49,14 +49,14 @@ const Signup = () => {
             <button className=" btn" disabled={loading} id='recaptcha-container' type="submit">Send OTP</button>
        </Form>    */}
       <hr></hr>
-      <Container fluid="md">
+      <Container>
         <Row>
           <Col sm={1} md={2}></Col>
-          <Col md={12} md={8}>
+          <Col sm={12} md={8}>
             <Row>
               <Form onSubmit={handleSubmit}>
                 <Row>
-                  <Col sm={12} md={6}>
+                  <Col xs={12} sm={6}>
                     <Form.Group controlId="formGridEmail">
                       <Form.Label>First Name</Form.Label>
                       <Form.Control
@@ -113,13 +113,13 @@ const Signup = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12}>
+                  <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 1</Form.Label>
                       <Form.Control placeholder="House/Apartment Number, Village/Town" />
                     </Form.Group>
                   </Col>
-                  <Col>
+                  <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 2</Form.Label>
                       <Form.Control placeholder="Society/Locality/Police Station" />
@@ -127,13 +127,13 @@ const Signup = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col sm={12} md={4}>
+                  <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridCity">
                       <Form.Label type="text">City</Form.Label>
                       <Form.Control placeholder="Eg: New Delhi" />
                     </Form.Group>
                   </Col>
-                  <Col sm={12} md={4}>
+                  <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridState">
                       <Form.Label>State</Form.Label>
                       <Form.Control as="select" defaultValue="Choose...">
@@ -145,7 +145,7 @@ const Signup = () => {
                       </Form.Control>
                     </Form.Group>
                   </Col>
-                  <Col sm={12} md={4}>
+                  <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridZip">
                       <Form.Label>Zip</Form.Label>
                       <Form.Control type="number" placeholder="Eg: 110043" />
@@ -153,7 +153,7 @@ const Signup = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col>
+                  <Col xs={12}>
                     <Form.Group id="formGridCheckbox">
                       <Form.Check
                         type="checkbox"
