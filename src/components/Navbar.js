@@ -53,12 +53,12 @@ function NavbarComponent() {
               </Nav.Link>
               <Nav.Link>
                 <Link class="nav-link" to="/signup">
-                  Signup
+                  Registration
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link class="nav-link" to="/login">
-                  Login
+                  LogIn
                 </Link>
               </Nav.Link>
             </Nav>
@@ -75,14 +75,20 @@ const Wrapper = styled.nav`
     padding: 10px 0;
   }
   .nav-link {
-    opacity: 0.85;
+    opacity: 0.80;
     text-decoration: none;
-    color: #5c342f !important;
+    font-size: 1.2rem;
+    color: #5c342f;
+    /* transition: border-radius 200ms linear; */
   }
   .nav-link:hover {
     opacity: 1;
-    text-decoration: underline;
-    text-decoration-color: #5c342f !important;
+    text-decoration: none;
+    color: #28a745 !important;
+    /* text-decoration-color: #5c342f !important; */
+    /* border-radius: 30px; */
+    /* background-color: lightgrey; */
+    font-weight: 500;
   }
 `;
 
