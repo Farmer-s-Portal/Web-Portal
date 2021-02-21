@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import firebase from "../firebase"
+import firebase,{fire} from "../firebase"
 import { Link,useHistory} from "react-router-dom";
 
 
@@ -56,10 +56,27 @@ export const UserProvider = ({ children }) => {
             console.log("error ",error)
           });
     }
+
+    const updateDb= async (number,name)=>{
+      console.log("updating db",name)
+      console.log(number)
+      // const db=firebase.database().ref()
+      const obj={
+        name:name,
+        phone:number
+      }
+      fire.child('users').push(obj,
+        err=>{
+          console.log("error",err);
+        }
+
+      )
+    }
     let value={
         signup,
         currentUser,
-        logout
+        logout,
+        updateDb
     }
 
    

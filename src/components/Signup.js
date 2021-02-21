@@ -16,17 +16,18 @@ const Signup = () => {
   const nameRef = useRef();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { signup, currentUser } = useUserContext();
+  const {signup, currentUser,updateDb } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       console.log("trying");
       setLoading(true);
-      console.log("trying", numberRef.current.value);
+      console.log("trying", nameRef.current.value);
       const num = "+91" + numberRef.current.value;
       const name = nameRef.current.value;
       await signup(num, name);
+      await updateDb(num,name);
       history.push("/");
       console.log("user", currentUser);
     } catch (error) {
@@ -71,7 +72,7 @@ const Signup = () => {
                       <Form.Label>Second Name</Form.Label>
                       <Form.Control
                         name="name"
-                        ref={nameRef}
+                      
                         type="text"
                         placeholder="LName"
                       />
