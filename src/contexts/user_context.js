@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
               console.log("user123",result.user)
               console.log("user123",currentUser)
              
-              return result.user
+             
             })
             .catch((err)=>{
                console.log("error",err) 
@@ -44,11 +44,13 @@ export const UserProvider = ({ children }) => {
  
     }
    
-    const signOut=async ()=>{
+    const logout=async ()=>{
 
         await firebase.auth().signOut().then(() => {
             // Sign-out successful.
+            console.log(currentUser)
             setCurrentUser(null);
+            console.log("abc",currentUser)
           }).catch((error) => {
             // An error happened.
             console.log("error ",error)
@@ -57,8 +59,12 @@ export const UserProvider = ({ children }) => {
     let value={
         signup,
         currentUser,
-        signOut
+        logout
     }
+
+   
+
+
     return (
         <UserContext.Provider value={value} >{children}</UserContext.Provider>
       )

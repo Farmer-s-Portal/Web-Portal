@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import {useUserContext} from '../contexts/user_context'
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
@@ -8,6 +8,19 @@ import logo from "../assets/logos/logo1.svg";
 
 // import './Navbar.css';
 function NavbarComponent() {
+  const  {currentUser,logout} = useUserContext();
+
+  const handleClick= async  ()=>{
+
+    try{
+      await logout()
+
+    }catch{
+      console.log("error in logout")
+    }
+  }
+   
+  console.log(currentUser)
   return (
     <Wrapper>
       <Navbar
@@ -19,6 +32,7 @@ function NavbarComponent() {
       >
         <Container>
           <Navbar.Brand>
+          
             <Link to="/">
               <img class="logo" src={logo} alt="nav logo" />
             </Link>
@@ -52,15 +66,18 @@ function NavbarComponent() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
+               {currentUser?<Link class="nav-link" onClick={handleClick}>Logout</Link> 
+               :
                 <Link class="nav-link" to="/signup">
                   Registration
                 </Link>
+                }
               </Nav.Link>
-              <Nav.Link>
+              {!currentUser?<Nav.Link>
                 <Link class="nav-link" to="/login">
                   LogIn
                 </Link>
-              </Nav.Link>
+              </Nav.Link>:null}
             </Nav>
           </Navbar.Collapse>
         </Container>

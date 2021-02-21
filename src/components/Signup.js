@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import {
   Form,
-  Card,
   Row,
   Container,
   Col,
@@ -163,7 +162,7 @@ const Signup = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Button variant="success" type="submit">
+                <Button variant="success" id='recaptcha-container' disabled={loading} type="submit">
                   Register
                 </Button>
               </Form>
