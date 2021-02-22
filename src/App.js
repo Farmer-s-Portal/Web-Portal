@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, Error, About, Login, Signup } from "./pages";
+
+import { Home, Error, About, Login, Signup, PrivateRoute } from "./pages";
 import { Navbar, Footer } from "./components";
+
 function App() {
   return (
     <Router>
@@ -15,14 +17,14 @@ function App() {
           <About />
         </Route>
 
-        <Route exact path="/login">
+        <PrivateRoute exact path="/login">
           <Login />
-        </Route>
+        </PrivateRoute>
 
-        <Route exact path="/signup">
+        <PrivateRoute exact path="/signup">
           <Signup />
-        </Route>
-        
+        </PrivateRoute>
+
         <Route path="*">
           <Error />
         </Route>

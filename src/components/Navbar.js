@@ -1,32 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-import {useUserContext} from '../contexts/user_context'
+
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPlus,
+  faSignInAlt,
+  faSignOutAlt,
+  faAddressBook,
+  faUserClock,
+} from "@fortawesome/free-solid-svg-icons";
 
+import { useUserContext } from "../contexts/user_context";
 import logo from "../assets/logos/logo1.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPlus, faSignInAlt,faAddressBook } from '@fortawesome/free-solid-svg-icons';
-// import './Navbar.css';
+
 function NavbarComponent() {
-  const  {currentUser,logout,setTrue,setFalse} = useUserContext();
+  const { currentUser, logout, setTrue, setFalse } = useUserContext();
 
-  const handleClick= async  ()=>{
-
-    try{
-      await logout()
-
-    }catch{
-      console.log("error in logout")
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch {
+      console.log("error in logout");
     }
-  }
-  const handleFarmer=()=>{
+  };
+  const handleFarmer = () => {
     setTrue();
-  }
-  const handleTrader=()=>{
+  };
+  const handleTrader = () => {
     setFalse();
-  }
-  console.log(currentUser)
+  };
+  console.log(currentUser);
   return (
     <Wrapper>
       <Navbar
@@ -38,7 +43,6 @@ function NavbarComponent() {
       >
         <Container>
           <Navbar.Brand>
-          
             <Link to="/">
               <img class="logo" src={logo} alt="nav logo" />
             </Link>
@@ -68,31 +72,52 @@ function NavbarComponent() {
               </Nav.Link>
               <Nav.Link>
                 <Link class="nav-link" to="/contact">
-                <FontAwesomeIcon icon={faAddressBook}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={faAddressBook}></FontAwesomeIcon>
                   Contact
                 </Link>
               </Nav.Link>
-              
-               {currentUser?<Link class="nav-link" onClick={handleClick}>Logout</Link> 
-               :
-               <Nav.Link>
-                <Link class="nav-link" to="/signup" onClick={handleFarmer}>
-                  <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
-                   Registration (farmer)
-                </Link>
-                <Link class="nav-link" to="/signup" onClick={handleTrader}>
-                  <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
-                   Registration (trader)
-                </Link>
+
+              {currentUser ? (
+                <Nav.Link>
+                  <Link class="nav-link" onClick={handleLogout}>
+                    Logout{" "}
+                    <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
+                  </Link>
                 </Nav.Link>
-                }
-             
-              {!currentUser?<Nav.Link>
-                <Link class="nav-link" to="/login">
-                <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon>
-                  LogIn
-                </Link>
-              </Nav.Link>:null}
+              ) : (
+                <Nav.Link>
+                  <NavDropdown title="Register" id="collasible-nav-dropdown">
+                    <NavDropdown.Item>
+                      <Link
+                        class="nav-link"
+                        to="/signup"
+                        onClick={handleFarmer}
+                      >
+                        farmer{" "}
+                        <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link
+                        class="nav-link"
+                        to="/signup"
+                        onClick={handleTrader}
+                      >
+                        trader{" "}
+                        <FontAwesomeIcon icon={faUserClock}></FontAwesomeIcon>
+                      </Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </Nav.Link>
+              )}
+
+              {!currentUser ? (
+                <Nav.Link>
+                  <Link class="nav-link" to="/login">
+                    <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon> Login
+                  </Link>
+                </Nav.Link>
+              ) : null}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -100,6 +125,7 @@ function NavbarComponent() {
     </Wrapper>
   );
 }
+
 const Wrapper = styled.nav`
   margin-bottom: 80px;
   .logo {
@@ -107,7 +133,7 @@ const Wrapper = styled.nav`
     padding: 10px 0;
   }
   .nav-link {
-    opacity: 0.80;
+    opacity: 0.8;
     text-decoration: none;
     font-size: 1.2rem;
     color: #5c342f;
@@ -120,7 +146,7 @@ const Wrapper = styled.nav`
     /* text-decoration-color: #5c342f !important; */
     /* border-radius: 30px; */
     /* background-color: lightgrey; */
-    font-weight: 500;
+    // font-weight: 500;
   }
 `;
 
