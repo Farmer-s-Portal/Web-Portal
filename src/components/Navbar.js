@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
 import logo from "../assets/logos/logo1.svg";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus, faSignInAlt,faAddressBook } from '@fortawesome/free-solid-svg-icons';
 // import './Navbar.css';
 function NavbarComponent() {
   const  {currentUser,logout} = useUserContext();
@@ -62,6 +63,7 @@ function NavbarComponent() {
               </Nav.Link>
               <Nav.Link>
                 <Link class="nav-link" to="/contact">
+                <FontAwesomeIcon icon={faAddressBook}></FontAwesomeIcon>
                   Contact
                 </Link>
               </Nav.Link>
@@ -69,12 +71,14 @@ function NavbarComponent() {
                {currentUser?<Link class="nav-link" onClick={handleClick}>Logout</Link> 
                :
                 <Link class="nav-link" to="/signup">
-                  Registration
+                  <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+                   Registration
                 </Link>
                 }
               </Nav.Link>
               {!currentUser?<Nav.Link>
                 <Link class="nav-link" to="/login">
+                <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon>
                   LogIn
                 </Link>
               </Nav.Link>:null}
