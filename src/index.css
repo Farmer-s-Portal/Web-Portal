@@ -19,6 +19,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   font-size: 0.875rem;
+  background-image: url('./assets/bg/bg-pattern.png')
 }
 
 ul {
