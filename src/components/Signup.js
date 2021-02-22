@@ -96,7 +96,6 @@ const Signup = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-
                 <Row>
                   <Col>
                     <Form.Group controlId="formGridPassword">
@@ -108,7 +107,6 @@ const Signup = () => {
                         <Form.Control
                           name="phone"
                           ref={numberRef}
-                          type="number"
                           placeholder="Phone Number"
                         />
                       </InputGroup>
@@ -123,7 +121,6 @@ const Signup = () => {
                     <Form.Group controlId="formGridAddress1">
                       <Form.Label>Aadhar Number</Form.Label>
                       <Form.Control
-                        type="number"
                         placeholder="1234 XXXX 6789"
                         ref={anumRef}
                       />
