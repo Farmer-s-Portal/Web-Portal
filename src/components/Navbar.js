@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faSignInAlt,faAddressBook } from '@fortawesome/free-solid-svg-icons';
 // import './Navbar.css';
 function NavbarComponent() {
-  const  {currentUser,logout} = useUserContext();
+  const  {currentUser,logout,setTrue,setFalse} = useUserContext();
 
   const handleClick= async  ()=>{
 
@@ -20,7 +20,12 @@ function NavbarComponent() {
       console.log("error in logout")
     }
   }
-   
+  const handleFarmer=()=>{
+    setTrue();
+  }
+  const handleTrader=()=>{
+    setFalse();
+  }
   console.log(currentUser)
   return (
     <Wrapper>
@@ -67,15 +72,21 @@ function NavbarComponent() {
                   Contact
                 </Link>
               </Nav.Link>
-              <Nav.Link>
+              
                {currentUser?<Link class="nav-link" onClick={handleClick}>Logout</Link> 
                :
-                <Link class="nav-link" to="/signup">
+               <Nav.Link>
+                <Link class="nav-link" to="/signup" onClick={handleFarmer}>
                   <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
-                   Registration
+                   Registration (farmer)
                 </Link>
+                <Link class="nav-link" to="/signup" onClick={handleTrader}>
+                  <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+                   Registration (trader)
+                </Link>
+                </Nav.Link>
                 }
-              </Nav.Link>
+             
               {!currentUser?<Nav.Link>
                 <Link class="nav-link" to="/login">
                 <FontAwesomeIcon icon={faSignInAlt}></FontAwesomeIcon>

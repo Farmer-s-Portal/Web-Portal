@@ -11,6 +11,6 @@ const app = firebase.initializeApp({
     messagingSenderId: "72819672317",
     appId: "1:72819672317:web:d527689dd2657dfa5cea94"
 })
-const base = firebase.database().ref()
+const base = firebase.firestore();
 export const fire=base
 export default firebase

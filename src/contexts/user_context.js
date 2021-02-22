@@ -7,16 +7,17 @@ const UserContext = React.createContext()
 
 export const UserProvider = ({ children }) => {
     const [currentUser,setCurrentUser]= useState(null)
+    const [isFarmer,setIsFarmer]=useState(true)
    
     // sign up function 
-    const signup=async (number,name)=>{
-        console.log("signing up",number)            
+    const signup=async (formVals)=>{
+              console.log(formVals.number)
          window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container",
         {
-            size:"invisible"         
-        });
+            size:"invisible"        
+        })
         console.log("signing up",window.recaptchaVerifier)
-        await firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier)
+        await firebase.auth().signInWithPhoneNumber(formVals.number,window.recaptchaVerifier)
         .then(function(e){
             console.log("inside then")
             let code = prompt("enter the otp")
@@ -27,21 +28,29 @@ export const UserProvider = ({ children }) => {
             }
             e.confirm(code)
             .then(function(result){
+              console.log("adding to db")
               setCurrentUser(result.user)
-              
+            
               console.log("user123",result.user)
-              console.log("user123",currentUser)
-             
-             
-            })
-            .catch((err)=>{
-               console.log("error",err) 
-            })
+              console.log("user12",result.user.uid)
+              fire.collection('users').doc(result.user.uid).set({
+                name:formVals.name,
+                phone: formVals.number,
+                aadharNumber: formVals.aadhar,
+                address:formVals.address,
+                type:formVals.type
+             })
+             .then(function(){
+               console.log("123")
+             }) 
+          
+          
         })
         .catch((err)=>{
             console.log("error",err) 
          })
- 
+        })
+      console.log("after everything")
     }
    
     const logout=async ()=>{
@@ -56,27 +65,20 @@ export const UserProvider = ({ children }) => {
             console.log("error ",error)
           });
     }
-
-    const updateDb= async (number,name)=>{
-      console.log("updating db",name)
-      console.log(number)
-      // const db=firebase.database().ref()
-      const obj={
-        name:name,
-        phone:number
-      }
-      fire.child('users').push(obj,
-        err=>{
-          console.log("error",err);
-        }
-
-      )
+    const setTrue=()=>{
+      setIsFarmer(true);
+    }
+    const setFalse=()=>{
+      setIsFarmer(false)
     }
     let value={
         signup,
         currentUser,
         logout,
-        updateDb
+        setTrue,
+        setFalse,
+        isFarmer
+        // updateDb
     }
 
    

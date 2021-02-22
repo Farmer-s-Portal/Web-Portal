@@ -14,20 +14,37 @@ import { useUserContext } from "../contexts/user_context";
 const Signup = () => {
   const numberRef = useRef();
   const nameRef = useRef();
+  const lnameRef = useRef();
+  const anumRef = useRef();
+  const add1Ref = useRef();
+  const add2Ref = useRef();
+  const cityRef = useRef();
+  const stateRef = useRef();
+  const zipRef = useRef();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const {signup, currentUser,updateDb } = useUserContext();
+  const {signup, currentUser,isFarmer } = useUserContext();
+
+  var type=isFarmer ? 'Farmer' :"Trader";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("trying");
       setLoading(true);
-      console.log("trying", nameRef.current.value);
-      const num = "+91" + numberRef.current.value;
-      const name = nameRef.current.value;
-      await signup(num, name);
-      await updateDb(num,name);
+      var formVals={
+        number: "+91" + numberRef.current.value,
+        name:    nameRef.current.value+" "+
+                 lnameRef.current.value,
+        address: add1Ref.current.value+ " "+
+                 add2Ref.current.value+ " "+
+                 cityRef.current.value+ " "+
+                 zipRef.current.value,
+        aadhar: anumRef.current.value,
+        type: stateRef.current.value
+      }
+    
+      await signup(formVals);
+      // await updateDb(num,name);
       history.push("/");
       console.log("user", currentUser);
     } catch (error) {
@@ -72,7 +89,7 @@ const Signup = () => {
                       <Form.Label>Second Name</Form.Label>
                       <Form.Control
                         name="name"
-                      
+                        ref={lnameRef}
                         type="text"
                         placeholder="LName"
                       />
@@ -108,6 +125,7 @@ const Signup = () => {
                       <Form.Control
                         type="number"
                         placeholder="1234 XXXX 6789"
+                        ref={anumRef}
                       />
                     </Form.Group>
                   </Col>
@@ -116,13 +134,13 @@ const Signup = () => {
                   <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 1</Form.Label>
-                      <Form.Control placeholder="House/Apartment Number, Village/Town" />
+                      <Form.Control  ref={add1Ref} placeholder="House/Apartment Number, Village/Town" />
                     </Form.Group>
                   </Col>
                   <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 2</Form.Label>
-                      <Form.Control placeholder="Society/Locality/Police Station" />
+                      <Form.Control ref={add2Ref} placeholder="Society/Locality/Police Station" />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -130,27 +148,26 @@ const Signup = () => {
                   <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridCity">
                       <Form.Label type="text">City</Form.Label>
-                      <Form.Control placeholder="Eg: New Delhi" />
+                      <Form.Control ref={cityRef} placeholder="Eg: New Delhi" />
                     </Form.Group>
                   </Col>
                   <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridState">
-                      <Form.Label>State</Form.Label>
-                      <Form.Control as="select" defaultValue="Choose...">
-                        <option>Choose...</option>
-                        <option>Delhi</option>
-                        <option>Haryana</option>
-                        <option>Uttar Pardesh</option>
-                        <option>Madhya Pardesh</option>
+                      <Form.Label>Type</Form.Label>
+                      <Form.Control ref={stateRef} value={type} as="select" defaultValue="Choose...">
+                        <option>Farmer</option>
+                        <option>Trader</option>
+                      
                       </Form.Control>
                     </Form.Group>
                   </Col>
                   <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridZip">
                       <Form.Label>Zip</Form.Label>
-                      <Form.Control type="number" placeholder="Eg: 110043" />
+                      <Form.Control ref={zipRef} type="number" placeholder="Eg: 110043" />
                     </Form.Group>
                   </Col>
+                  
                 </Row>
                 <Row>
                   <Col xs={12}>
