@@ -26,7 +26,7 @@ const Signup = () => {
   const {signup, currentUser,isFarmer } = useUserContext();
 
   var type=isFarmer ? 'Farmer' :"Trader";
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -45,13 +45,17 @@ const Signup = () => {
     
       await signup(formVals);
       // await updateDb(num,name);
-      history.push("/");
+      
+     
+        history.push("/");
+      
+      
       console.log("user", currentUser);
     } catch (error) {
       console.log("err", error);
     }
   };
-
+  
   return (
     <Wrapper>
       <hr></hr>
@@ -67,6 +71,7 @@ const Signup = () => {
        </Form>    */}
       <hr></hr>
       <Container>
+     
         <Row>
           <Col sm={1} md={2}></Col>
           <Col sm={12} md={8}>

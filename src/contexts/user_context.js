@@ -8,17 +8,27 @@ const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(getLocalStorage);
   const [isFarmer, setIsFarmer] = useState(true);
-
+ 
   // sign up function
+
   const signup = async (formVals) => {
     console.log(formVals.number);
+
+
+    const userRef = fire.collection('users');
+    const snapshot = await userRef.where('phone', '==', formVals.number).get();
+
+    if(snapshot)
+    {
+       // alert show krke login p redirect krne ki functionality
+    }
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
       {
         size: "invisible",
       }
     );
-
+    
     console.log("signing up", window.recaptchaVerifier);
     await firebase
       .auth()
@@ -92,9 +102,13 @@ export const UserProvider = ({ children }) => {
     logout,
     setTrue,
     setFalse,
-    isFarmer,
+    isFarmer
     // updateDb
   };
+
+
+
+
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
