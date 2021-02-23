@@ -8,8 +8,8 @@ import {
   faUserPlus,
   faSignInAlt,
   faSignOutAlt,
-  faAddressBook,
   faUserClock,
+  faInfoCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useUserContext } from "../contexts/user_context";
@@ -40,6 +40,7 @@ function NavbarComponent() {
         bg="light"
         variant="light"
         fixed="top"
+        className="shadow-sm"
       >
         <Container>
           <Navbar.Brand>
@@ -67,16 +68,10 @@ function NavbarComponent() {
             <Nav>
               <Nav.Link>
                 <Link class="nav-link" to="/about">
+                <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon>{" "}
                   About
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link class="nav-link" to="/contact">
-                  <FontAwesomeIcon icon={faAddressBook}></FontAwesomeIcon>
-                  Contact
-                </Link>
-              </Nav.Link>
-
               {currentUser ? (
                 <Nav.Link>
                   <Link class="nav-link" onClick={handleLogout}>
@@ -93,7 +88,7 @@ function NavbarComponent() {
                         to="/signup"
                         onClick={handleFarmer}
                       >
-                        farmer{" "}
+                        Farmer{" "}
                         <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
                       </Link>
                     </NavDropdown.Item>
@@ -103,7 +98,7 @@ function NavbarComponent() {
                         to="/signup"
                         onClick={handleTrader}
                       >
-                        trader{" "}
+                        Trader{" "}
                         <FontAwesomeIcon icon={faUserClock}></FontAwesomeIcon>
                       </Link>
                     </NavDropdown.Item>

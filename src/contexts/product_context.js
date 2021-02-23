@@ -3,8 +3,8 @@ import axios from 'axios'
 import reducer from '../reducers/products_reducer'
 const Mandisdummy = [
       {
-        name:'abcd',
-        location:'Najafgarh',
+        name:'Keshopur Mandi',
+        location:'Keshopur',
         shops: 20,
         rating: 4.5,
         reviews: [
@@ -13,8 +13,8 @@ const Mandisdummy = [
         area:'South West Delhi'
       },
       {
-        name:'nbvana',
-        location:'Najafgarh',
+        name:'Azadpur Mandi',
+        location:'Azadpur',
         shops: 20,
         rating: 2.5,
         reviews: [
@@ -23,7 +23,7 @@ const Mandisdummy = [
         area:'South West Delhi'
       },
       {
-        name:'qwer',
+        name:'Reawr',
         location:'Rewari District',
         shops: 25,
         rating: 3.5,
@@ -41,6 +41,16 @@ const Mandisdummy = [
           'good','abvaidva','abvnaenavd','avnioneva',
         ],
         area:'Rewari,Haryana'
+      },
+      {
+        name:'Anaj Mandi',
+        location:'Najafgarh',
+        shops: 25,
+        rating: 4.1,
+        reviews: [
+          'good','abvaidva','abvnaenavd','avnioneva',
+        ],
+        area:'South West Delhi'
       }
      ]
 

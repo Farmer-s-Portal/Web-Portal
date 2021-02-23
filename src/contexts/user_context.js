@@ -37,7 +37,6 @@ export const UserProvider = ({ children }) => {
             console.log("adding to db");
             setCurrentUser(result.user);
             localStorage.setItem("user", JSON.stringify(result.user));
-
             console.log("user123", result.user);
             console.log("user12", result.user.uid);
 

@@ -1,60 +1,51 @@
 import React from "react";
 import {useProductsContext} from '../contexts/product_context'
 import Hero from "../components/Hero"
-import {Card,Button} from "react-bootstrap"
-
+import {Card,Button, ListGroup, ListGroupItem, FormGroup, Form} from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faStore,
+  faStar
+} from "@fortawesome/free-solid-svg-icons";
 const HomePage = () =>{
      const {area,setarea,mandis} = useProductsContext();
 
-     
   return (
     <main>
       <h1>home page</h1>
       <Hero/>
-      <form className='container'>
-        {/* <h1>Search Your Nearby Mandis/markets</h1> */}
-        <div style={{margin:'0 0 15px 0'}}>
-        {/* <label htmlFor="area">Area :</label> */}
-        <select name='area' value={area} onChange={setarea}>
+      <FormGroup style={{width:"320px", margin:"auto"}}>
+        <Form.Control as="select" name="area" value={area} onChange={setarea}>
         <option value='all'>Select the mandi which best suits you</option>
         <option value='South West Delhi'>South West Delhi</option>
         <option value='Rewari,Haryana'>Rewari,Haryana</option>  
-        </select> 
-        </div>
-      </form>
-      {/* <section className=''>
-        {mandis.map((mandi,index)=>{
-          const {name,location,shops,rating,area,reviews}=mandi;
-            return (
-              <article key={index} className=''>
-                <h2>Name: {name}</h2>
-                <h3>Location: {location}</h3>
-                <h3>Area: {area}</h3> */}
-                {/*<Rating /> */}
-                 {/* <p>{shops} shops</p>
-                 <button type='button'>Enter Mandi</button>
-              </article>
-            )
-        })}
-      </section> */}
+        </Form.Control>
+      </FormGroup>
       <section className='container'>
       <div className='row'>
         {mandis.map((mandi,index)=>{
           const {name,location,shops,rating,area,reviews}=mandi;
             return (
-              <div className='col-lg-3 col-md-4 col-sm-6 col-xsm-12'>
-              <Card> 
+              <div className='col-lg-3 col-md-4 col-sm-6 col-xsm-12 m-4'>
+              <Card style={{ width: '18rem' }} className="shadow-sm">
+                <div className="rating position-absolute p-2" style={{right:"10px", top:"10px", borderRadius:"10px", backgroundColor:"lightgrey", fontWeight:"600"}}>
+                <FontAwesomeIcon icon={faStar} className="mr-1" style={{color:"goldenrod"}}></FontAwesomeIcon>
+                  {rating}
+                </div>
+                <Card.Img variant="top" src="https://aniportalimages.s3.amazonaws.com/media/details/EVsOuIGU0AAWoqq_6kP82gF.jpg" />
                 <Card.Body>
-                  <Card.Title>
-                    {name.toUpperCase()}
-                  </Card.Title>
-                  <Card.Subtitle style={{color:'grey',texttransform:'capitalize'}}>
-                    {location}
-                  </Card.Subtitle>
-                  <Card.Text>
-                    There are {shops} shops in {area}
-                  </Card.Text>
-                  <Button variant="outline-success" block>Enter {name.toUpperCase()} mandi</Button>
+                  <Card.Title>{name.toUpperCase()}</Card.Title>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>
+                      <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-4"></FontAwesomeIcon>
+                      {location}
+                  </ListGroupItem>
+                  <ListGroupItem><FontAwesomeIcon icon={faStore} className="mr-3"></FontAwesomeIcon>There are {shops} shops</ListGroupItem>
+                </ListGroup>
+                <Card.Body>
+                <Button variant="outline-success" block>Enter {name.toUpperCase()}</Button>
                 </Card.Body>
               </Card>
               </div>
