@@ -12,8 +12,9 @@ import styled from "styled-components";
 
 function LoginPage() {
   const [mobile, setMobile] = useState("");
+  const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
-  const [disableButton, setDisableButton] = useState(false);
+  const [disableButton, setDisableButton] = useState(true);
   const [error, setError] = useState({
     show: false,
     msg: "",
@@ -31,12 +32,23 @@ function LoginPage() {
     }
   };
 
+  const handleOtpInput = (e) => {
+    let input = e.target.value;
+    setOtp(input);
+    if (input.length > 0) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isOtpSent) {
       // TODO: otp is entered by user check and login
     } else {
       //TODO: user is requesting for OTP
+      setDisableButton(true);
       setIsOtpSent(true);
     }
   };
@@ -71,7 +83,13 @@ function LoginPage() {
         {isOtpSent && (
           <div>
             <label htmlFor="otp">Enter OTP: </label>
-            <input type="otp" name="otp" id="otp" />
+            <input
+              type="otp"
+              name="otp"
+              id="otp"
+              value={otp}
+              onChange={handleOtpInput}
+            />
             <p>
               OTP not received? <a href="#">resend otp</a>
             </p>
