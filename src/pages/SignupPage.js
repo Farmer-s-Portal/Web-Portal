@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import  SignUp  from "../components/Signup";
+
+import SignUp from "../components/Signup";
+
 function SignupPage() {
   return (
     <Wrapper>
-       <SignUp/>
+      <SignUp />
     </Wrapper>
   );
 }

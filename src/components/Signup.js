@@ -1,14 +1,8 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import {
-  Form,
-  Row,
-  Container,
-  Col,
-  Button,
-  InputGroup,
-} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { Form, Row, Container, Col, Button, InputGroup } from "react-bootstrap";
+
 import { useUserContext } from "../contexts/user_context";
 
 const Signup = () => {
@@ -23,39 +17,41 @@ const Signup = () => {
   const zipRef = useRef();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const {signup, currentUser,isFarmer } = useUserContext();
+  const { signup, currentUser, isFarmer } = useUserContext();
 
-  var type=isFarmer ? 'Farmer' :"Trader";
- 
+  var type = isFarmer ? "Farmer" : "Trader";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      var formVals={
+      var formVals = {
         number: "+91" + numberRef.current.value,
-        name:    nameRef.current.value+" "+
-                 lnameRef.current.value,
-        address: add1Ref.current.value+ " "+
-                 add2Ref.current.value+ " "+
-                 cityRef.current.value+ " "+
-                 zipRef.current.value,
+        name: nameRef.current.value + " " + lnameRef.current.value,
+        address:
+          add1Ref.current.value +
+          " " +
+          add2Ref.current.value +
+          " " +
+          cityRef.current.value +
+          " " +
+          zipRef.current.value,
         aadhar: anumRef.current.value,
-        type: stateRef.current.value
-      }
-    
+        type: stateRef.current.value,
+      };
+
       await signup(formVals);
       // await updateDb(num,name);
-      
-     
-        history.push("/");
-      
-      
+
+      history.push("/");
+
       console.log("user", currentUser);
     } catch (error) {
+      alert("Error Regestring User!");
       console.log("err", error);
     }
   };
-  
+
   return (
     <Wrapper>
       <hr></hr>
@@ -71,7 +67,6 @@ const Signup = () => {
        </Form>    */}
       <hr></hr>
       <Container>
-     
         <Row>
           <Col sm={1} md={2}></Col>
           <Col sm={12} md={8}>
@@ -136,13 +131,19 @@ const Signup = () => {
                   <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 1</Form.Label>
-                      <Form.Control  ref={add1Ref} placeholder="House/Apartment Number, Village/Town" />
+                      <Form.Control
+                        ref={add1Ref}
+                        placeholder="House/Apartment Number, Village/Town"
+                      />
                     </Form.Group>
                   </Col>
                   <Col xs={12}>
                     <Form.Group controlId="formGridAddress2">
                       <Form.Label>Address Line 2</Form.Label>
-                      <Form.Control ref={add2Ref} placeholder="Society/Locality/Police Station" />
+                      <Form.Control
+                        ref={add2Ref}
+                        placeholder="Society/Locality/Police Station"
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -156,20 +157,27 @@ const Signup = () => {
                   <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridState">
                       <Form.Label>Type</Form.Label>
-                      <Form.Control ref={stateRef} value={type} as="select" defaultValue="Choose...">
+                      <Form.Control
+                        ref={stateRef}
+                        value={type}
+                        as="select"
+                        defaultValue="Choose..."
+                      >
                         <option>Farmer</option>
                         <option>Trader</option>
-                      
                       </Form.Control>
                     </Form.Group>
                   </Col>
                   <Col xs={12} sm={4}>
                     <Form.Group controlId="formGridZip">
                       <Form.Label>Zip</Form.Label>
-                      <Form.Control ref={zipRef} type="number" placeholder="Eg: 110043" />
+                      <Form.Control
+                        ref={zipRef}
+                        type="number"
+                        placeholder="Eg: 110043"
+                      />
                     </Form.Group>
                   </Col>
-                  
                 </Row>
                 <Row>
                   <Col xs={12}>
@@ -182,7 +190,12 @@ const Signup = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Button variant="success" id='recaptcha-container' disabled={loading} type="submit">
+                <Button
+                  variant="success"
+                  id="recaptcha-container"
+                  disabled={loading}
+                  type="submit"
+                >
                   Register
                 </Button>
               </Form>
