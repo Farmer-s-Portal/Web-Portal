@@ -77,6 +77,15 @@ export const UserProvider = ({ children }) => {
   
   const login= async(number)=>{
     number="+91"+number
+    const userRef = fire.collection("users");
+    const snapshot = await userRef.where("phone", "==", number).get();
+
+    if (snapshot) {
+      // alert show krke login p redirect krne ki functionality
+      alert("User doesn't Exists");
+     
+    }
+
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
       {
