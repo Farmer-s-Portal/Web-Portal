@@ -74,7 +74,41 @@ export const UserProvider = ({ children }) => {
 
     console.log("after everything");
   };
+  
+  const login= async(number)=>{
+    number="+91"+number
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+      }
+    );
 
+    await firebase
+      .auth()
+      .signInWithPhoneNumber(number, window.recaptchaVerifier)
+      .then(function (e) {
+        console.log("inside then");
+        let code = prompt("enter the otp");
+        console.log("code", code);
+
+        if (code == null) {
+          return;
+        }
+
+        e.confirm(code)
+          .then(function (result) {
+            console.log("adding to db");
+            setCurrentUser(result.user);
+            localStorage.setItem("user", JSON.stringify(result.user));
+            console.log("user123", result.user);
+            console.log("user12", result.user.uid);
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
+        })
+  }
   const logout = async () => {
     await firebase
       .auth()
@@ -106,6 +140,7 @@ export const UserProvider = ({ children }) => {
     setTrue,
     setFalse,
     isFarmer,
+    login
     // updateDb
   };
 
