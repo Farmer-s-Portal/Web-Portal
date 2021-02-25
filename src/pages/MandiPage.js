@@ -11,6 +11,7 @@ import {
 
 function MandiPage() {
     const {area,setarea,mandis} = useProductsContext();
+    console.log("mandis",mandis)
   return (
     <div>
        <FormGroup style={{width:"320px", margin:"auto"}}>
@@ -23,7 +24,7 @@ function MandiPage() {
       <section className='container'>
       <div className='row'>
         {mandis.map((mandi,index)=>{
-          const {name,location,shops,rating,area,reviews}=mandi;
+          const {commodity,location,shops,rating,area,reviews}=mandi;
             return (
               <div className='col-lg-3 col-md-4 col-sm-6 col-xsm-12 m-4'>
               <Card style={{ width: '18rem' }} className="shadow-sm">
@@ -33,7 +34,7 @@ function MandiPage() {
                 </div>
                 <Card.Img variant="top" src="https://aniportalimages.s3.amazonaws.com/media/details/EVsOuIGU0AAWoqq_6kP82gF.jpg" />
                 <Card.Body>
-                  <Card.Title>{name.toUpperCase()}</Card.Title>
+                  <Card.Title>{commodity.toUpperCase()}</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroupItem>
@@ -43,7 +44,7 @@ function MandiPage() {
                   <ListGroupItem><FontAwesomeIcon icon={faStore} className="mr-3"></FontAwesomeIcon>There are {shops} shops</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                <Button variant="outline-success" block>Enter {name.toUpperCase()}</Button>
+                <Button variant="outline-success" block>Enter {commodity.toUpperCase()}</Button>
                 </Card.Body>
               </Card>
               </div>

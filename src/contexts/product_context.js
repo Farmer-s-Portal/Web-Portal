@@ -3,7 +3,7 @@ import axios from "axios";
 import reducer from "../reducers/products_reducer";
 const Mandisdummy = [
   {
-    name: "Keshopur Mandi",
+    commodity: "Keshopur Mandi",
     location: "Keshopur",
     shops: 20,
     rating: 4.5,
@@ -11,7 +11,7 @@ const Mandisdummy = [
     area: "South West Delhi",
   },
   {
-    name: "Azadpur Mandi",
+    commodity: "Azadpur Mandi",
     location: "Azadpur",
     shops: 20,
     rating: 2.5,
@@ -19,7 +19,7 @@ const Mandisdummy = [
     area: "South West Delhi",
   },
   {
-    name: "Reawr",
+    commodity: "Reawr",
     location: "Rewari District",
     shops: 25,
     rating: 3.5,
@@ -27,7 +27,7 @@ const Mandisdummy = [
     area: "Rewari,Haryana",
   },
   {
-    name: "qwer",
+    commodity: "qwer",
     location: "Rewari District",
     shops: 25,
     rating: 3.5,
@@ -35,7 +35,7 @@ const Mandisdummy = [
     area: "Rewari,Haryana",
   },
   {
-    name: "Anaj Mandi",
+    commodity: "Anaj Mandi",
     location: "Najafgarh",
     shops: 25,
     rating: 4.1,
@@ -69,6 +69,7 @@ export const ProductsProvider = ({ children }) => {
       const res = await axios.get(url);
       const data = res.data;
       console.log("fetched API avlues", data);
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -76,8 +77,16 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchMandiData("https://mandi-details-api.herokuapp.com/api");
-  }, [state.area]);
+    console.log("use effect")
+    dispatch({type:'SET_LOADING'})
+    fetchMandiData("https://mandi-details-api.herokuapp.com/api")
+     .then(function(data){
+      console.log("data",data)
+      dispatch({type:'GET_MANDIS',payload:data})
+      console.log(state.mandis)
+     })
+   
+  }, []);
 
   return (
     <ProductsContext.Provider

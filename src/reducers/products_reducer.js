@@ -2,6 +2,14 @@ const products_reducer = (state, action) => {
   if (action.type === "SET_AREA") {
     return { ...state, area: action.payload };
   }
+  if(action.type==='GET_MANDIS')
+  {
+    return {...state, loading:false,all_mandis:action.payload,mandis:action.payload}
+  }
+  if(action.type==='SET_LOADING')
+  {
+    return {...state, loading:true}
+  }
   if (action.type === "SET_MANDIS") {
     const { area, all_mandis } = state;
     //console.log(area);
