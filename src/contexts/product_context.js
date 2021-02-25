@@ -72,10 +72,20 @@ export const ProductsProvider = ({children}) =>{
         //console.log(value);
         dispatch({type:'SET_AREA',payload:value})
     }
-
+    
+    
     useEffect(()=>{
+      console.log("Api calling")
+      axios.get({URL :'https://mandi-details-api.herokuapp.com/api'})
+        .then(function(response){
+          console.log('fetched API avlues',response)
+        })
+       
        dispatch({type:'SET_MANDIS'})
     },[state.area])
+
+
+
     return (
         <ProductsContext.Provider value={{
             ...state,

@@ -4,5 +4,6 @@ import Error from "./ErrorPage";
 import Login from "./LoginPage";
 import Signup from "./SignupPage";
 import PrivateRoute from "./PrivateRoutePage";
+import Mandi from './MandiPage'
 
-export { Home, About, Error, Login, Signup, PrivateRoute };
+export { Home, About, Error, Login, Signup, PrivateRoute,Mandi };

@@ -82,7 +82,7 @@ export const UserProvider = ({ children }) => {
 
     if (snapshot) {
       // alert show krke login p redirect krne ki functionality
-      alert("User doesn't Exists");
+      alert("User doesn't Exists / invalid phone number");
      
     }
 

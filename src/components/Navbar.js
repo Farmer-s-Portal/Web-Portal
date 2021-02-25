@@ -66,6 +66,11 @@ function NavbarComponent() {
               </NavDropdown> */}
             </Nav>
             <Nav>
+            <Nav.Link>
+                <Link class="nav-link" to="/mandi">
+                  <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> Mandi Prices
+                </Link>
+              </Nav.Link>
               <Nav.Link>
                 <Link class="nav-link" to="/about">
                   <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> About

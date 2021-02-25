@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { Home, Error, About, Login, Signup, PrivateRoute } from "./pages";
+import { Home, Error, About, Login, Signup, PrivateRoute,Mandi } from "./pages";
 import { Navbar, Footer } from "./components";
 
 function App() {
@@ -24,6 +24,10 @@ function App() {
         <PrivateRoute exact path="/signup">
           <Signup />
         </PrivateRoute>
+
+        <Route exact path="/mandi">
+          <Mandi/>
+        </Route>
 
         <Route path="*">
           <Error />
