@@ -141,5 +141,6 @@ const Wrapper = styled.section`
   }
   input[type="number"] {
     -moz-appearance: textfield;
+  }
 `
 export default Login;
