@@ -79,11 +79,11 @@ export const UserProvider = ({ children }) => {
     number="+91"+number
     const userRef = fire.collection("users");
     const snapshot = await userRef.where("phone", "==", number).get();
-
-    if (snapshot) {
+   
+    if (!snapshot) {
       // alert show krke login p redirect krne ki functionality
       alert("User doesn't Exists / invalid phone number");
-     
+      return;
     }
 
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
