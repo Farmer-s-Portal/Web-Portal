@@ -21,9 +21,9 @@ function Footer() {
               <FontAwesomeIcon icon={faEnvelopeOpenText}></FontAwesomeIcon>{" "}
               Click
               <a href="mailto:farmers.portal.adm@gmail.com"> here</a> to drop an
-              email
+              Email
             </address>
-            <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon> Phone Number{" "}
+            <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon> Phone:{" "}
             <a href="tel:9315880376">9315880376</a>
           </div>
         </div>
