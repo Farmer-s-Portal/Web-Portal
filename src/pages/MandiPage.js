@@ -16,7 +16,7 @@ function MandiPage() {
     const {area,setarea,mandis, locations, commodities, scommodity, setCommodity} = useProductsContext();
   return (
     <div className="position-relative">
-       <FormGroup className="shadow p-2 position-sticky filter-form">
+       <FormGroup style={{marginBottom:'20px'}} className="shadow p-2 position-sticky filter-form">
         <Form.Label id="area" className="m-2 p-2"><b>State</b></Form.Label>
         <Form.Control as="select" name="area" className="m-2" value={area} onChange={setarea}>        
         <option value='all'>Nearby</option>
@@ -42,8 +42,8 @@ function MandiPage() {
           const {commodity,location,shops,rating,reviews, modalPrice, marketCenter}=mandi;
           if((marketCenter.split(',').pop() == area || area == 'all') && (commodity == scommodity || scommodity == 'all'))
             return (
-              <div className='col-lg-3 col-md-4 col-sm-6 col-xsm-12 m-4'>
-              <Card style={{ width: '18rem' }} className="shadow-sm">
+              <div style={{marginBottom:'20px'}} className='col-lg-4 col-md-6 col-sm-12'>
+              <Card  className="back-shadow ">
                 <div className="rating position-absolute p-2">
                 <FontAwesomeIcon icon={faStar} className="mr-1" style={{color:"goldenrod"}}></FontAwesomeIcon>
                   {Math.ceil(Math.random()*(20) + 25)/10}
