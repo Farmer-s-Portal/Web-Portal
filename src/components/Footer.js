@@ -10,8 +10,8 @@ import {
 
 function Footer() {
   return (
-    <Wrapper>
-      <div className="bg-light p-3 shadow-lg">
+    <Wrapper className="bg-light shadow-lg">
+      <div className="bg-light p-5">
         <div className="container">
           <span className="m-0 contact-us">
             <FontAwesomeIcon icon={faAddressBook}></FontAwesomeIcon> Contact Us
@@ -35,8 +35,6 @@ function Footer() {
 const Wrapper = styled.div`
   text-align: center;
   font-size: 1.2rem;
-  margin-top: 100px;
-
   .contact-us {
     font-size: 2rem;
   }

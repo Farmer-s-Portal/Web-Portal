@@ -1,22 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 
+import loadingGIF from "../assets/loading/loading.gif";
+
 const Loading = () => {
   return (
     <Wrapper>
-      <div className="container">
-        <div className="loading"></div>
+      <div className="contain">
+        <img src={loadingGIF} alt="loading-gif" class="gif" />
       </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  .container {
+  .contain {
+    background: #f5f4f0;
     padding: 5rem 0;
-    width: 90vw;
     margin: 0 auto;
-    min-height: 100vw;
+    min-height: 60vw;
+  }
+
+  .gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
 `;
 

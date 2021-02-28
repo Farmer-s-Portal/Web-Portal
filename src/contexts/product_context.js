@@ -9,7 +9,7 @@ const Mandisdummy = [
     rating: 4.5,
     reviews: ["good", "abvaidva", "abvnaenavd", "avnioneva"],
     area: "South West Delhi",
-    modalPrice: 5000
+    modalPrice: 5000,
   },
   {
     commodity: "Azadpur Mandi",
@@ -18,7 +18,7 @@ const Mandisdummy = [
     rating: 2.5,
     reviews: ["good", "abvaidva", "abvnaenavd", "avnioneva"],
     area: "South West Delhi",
-    modalPrice: 4300
+    modalPrice: 4300,
   },
   {
     commodity: "Reawr",
@@ -27,7 +27,7 @@ const Mandisdummy = [
     rating: 3.5,
     reviews: ["good", "abvaidva", "abvnaenavd", "avnioneva"],
     area: "Rewari,Haryana",
-    modalPrice: 3750
+    modalPrice: 3750,
   },
   {
     commodity: "qwer",
@@ -36,7 +36,7 @@ const Mandisdummy = [
     rating: 3.5,
     reviews: ["good", "abvaidva", "abvnaenavd", "avnioneva"],
     area: "Rewari,Haryana",
-    modalPrice: 2500
+    modalPrice: 2500,
   },
   {
     commodity: "Anaj Mandi",
@@ -45,18 +45,18 @@ const Mandisdummy = [
     rating: 4.1,
     reviews: ["good", "abvaidva", "abvnaenavd", "avnioneva"],
     area: "South West Delhi",
-    modalPrice: 2500
+    modalPrice: 2500,
   },
 ];
 
 const initialState = {
-  loading: false,
+  loading: true,
   area: "all",
   all_mandis: Mandisdummy,
   mandis: Mandisdummy,
   locations: [],
-  scommodity: 'all',
-  commodities: []
+  scommodity: "all",
+  commodities: [],
 };
 
 const ProductsContext = React.createContext();
@@ -91,17 +91,32 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("use effect")
-    dispatch({type:'SET_LOADING'})
-    fetchMandiData("https://mandi-details-api.herokuapp.com/api")
-     .then(function(data){
-      // console.log("data",);
-      const locations = [...new Set(data.map(item => item.marketCenter.split(',').pop()))];
-      const commodities = [...new Set(data.map(item => item.commodity))];
-      dispatch({type:'GET_MANDIS',payload:[data,locations,commodities]})
-      console.log(state.mandis)
-     })
-   
+    console.log("use effect");
+    console.log("start loading");
+    dispatch({ type: "SET_LOADING" });
+    fetchMandiData("https://mandi-details-api.herokuapp.com/api").then(
+      function (data) {
+        console.log("data");
+        const locations = [
+          ...new Set(
+            data.map((item) => item.marketCenter.split(",").pop().trim())
+          ),
+        ];
+        locations.sort();
+        console.log("locations: ", locations);
+        const commodities = [
+          ...new Set(data.map((item) => item.commodity.trim())),
+        ];
+        commodities.sort();
+        dispatch({
+          type: "GET_MANDIS",
+          payload: [data, locations, commodities],
+        });
+        console.log(state.mandis);
+        console.log("stop loading");
+        dispatch({ type: "STOP_LOADING" });
+      }
+    );
   }, []);
 
   return (
@@ -109,7 +124,7 @@ export const ProductsProvider = ({ children }) => {
       value={{
         ...state,
         setarea,
-        setCommodity
+        setCommodity,
       }}
     >
       {children}

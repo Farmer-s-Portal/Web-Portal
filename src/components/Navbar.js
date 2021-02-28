@@ -66,9 +66,10 @@ function NavbarComponent() {
               </NavDropdown> */}
             </Nav>
             <Nav>
-            <Nav.Link>
+              <Nav.Link>
                 <Link class="nav-link" to="/mandi">
-                  <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> Mandi Prices
+                  <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> Mandi
+                  Prices
                 </Link>
               </Nav.Link>
               <Nav.Link>
@@ -126,7 +127,7 @@ function NavbarComponent() {
 }
 
 const Wrapper = styled.nav`
-  margin-bottom: 80px;
+  padding-bottom: 80px;
   .logo {
     width: 80%;
     padding: 10px 0;
