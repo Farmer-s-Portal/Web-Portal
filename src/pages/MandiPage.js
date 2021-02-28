@@ -16,7 +16,7 @@ function MandiPage() {
     const {area,setarea,mandis, locations, commodities, scommodity, setCommodity} = useProductsContext();
   return (
     <div className="position-relative">
-       <FormGroup style={{marginBottom:'20px'}} className="shadow p-2 position-sticky filter-form">
+       <FormGroup style={{marginBottom:'20px',width:'70%'}} className="shadow p-2 position-sticky filter-form">
         <Form.Label id="area" className="m-2 p-2"><b>State</b></Form.Label>
         <Form.Control as="select" name="area" className="m-2" value={area} onChange={setarea}>        
         <option value='all'>Nearby</option>
