@@ -132,7 +132,7 @@ const Wrapper = styled.nav`
     padding: 10px 0;
   }
   .nav-link {
-    opacity: 0.8;
+    opacity: 0.9;
     text-decoration: none;
     font-size: 1.2rem;
     color: #5c342f;

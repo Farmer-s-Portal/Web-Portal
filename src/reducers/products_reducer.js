@@ -2,9 +2,12 @@ const products_reducer = (state, action) => {
   if (action.type === "SET_AREA") {
     return { ...state, area: action.payload };
   }
+  if (action.type === "SET_COMMO") {
+    return { ...state, scommodity: action.payload };
+  }
   if(action.type==='GET_MANDIS')
   {
-    return {...state, loading:false,all_mandis:action.payload,mandis:action.payload}
+    return {...state, loading:false,all_mandis:action.payload[0],mandis:action.payload[0], locations:action.payload[1], commodities: action.payload[2]}
   }
   if(action.type==='SET_LOADING')
   {
