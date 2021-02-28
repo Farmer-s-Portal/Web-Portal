@@ -128,3 +128,13 @@ p {
   background: #555;
 }
 /* ======= CUSTOM SCROLLBAR ======== */
+.brand-style{
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-size: 40px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}

@@ -7,7 +7,7 @@ import {
   faPhone,
   faEnvelopeOpenText,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { faFacebook, faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 function Footer() {
   return (
     <Wrapper>
@@ -25,6 +25,10 @@ function Footer() {
             </address>
             <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon> Phone:{" "}
             <a href="tel:9315880376">9315880376</a>
+            <br></br>
+            <a style={{color:'#3B5998'}} href="#"><FontAwesomeIcon className="brand-style" icon={faFacebook}></FontAwesomeIcon></a>
+            <a style={{color:'#55ACEE'}} href="#"><FontAwesomeIcon className="brand-style" icon={faTwitter}></FontAwesomeIcon></a>
+            <a style={{color:'#125688'}} href="#"><FontAwesomeIcon className="brand-style" icon={faInstagram}></FontAwesomeIcon></a>
           </div>
         </div>
       </div>
