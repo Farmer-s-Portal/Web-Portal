@@ -96,8 +96,8 @@ export const ProductsProvider = ({ children }) => {
     fetchMandiData("https://mandi-details-api.herokuapp.com/api")
      .then(function(data){
       // console.log("data",);
-      const locations = [...new Set(data.map(item => item.marketCenter.split(',').pop()))];
-      const commodities = [...new Set(data.map(item => item.commodity))];
+      const locations = [...new Set(data.map(item => item.marketCenter.split(',').pop().trim()))].sort();
+      const commodities = [...new Set(data.map(item => item.commodity))].sort();
       dispatch({type:'GET_MANDIS',payload:[data,locations,commodities]})
       console.log(state.mandis)
      })
