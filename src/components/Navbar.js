@@ -17,7 +17,7 @@ import logo from "../assets/logos/logo1.svg";
 
 function NavbarComponent() {
   const { currentUser, logout, setTrue, setFalse } = useUserContext();
-
+  console.log("current",currentUser)
   const handleLogout = async () => {
     try {
       await logout();
@@ -82,8 +82,8 @@ function NavbarComponent() {
                     Logout{" "}
                     <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
                   </Link>
-                </Nav.Link>
-              ) : (
+                </Nav.Link>)  
+               : (
                 <Nav.Link>
                   <NavDropdown title="Register" id="collasible-nav-dropdown">
                     <NavDropdown.Item>
@@ -109,6 +109,24 @@ function NavbarComponent() {
                   </NavDropdown>
                 </Nav.Link>
               )}
+              {currentUser&&currentUser.type=='Farmer'?
+                <Nav.Link>
+                <Link class="nav-link" to='/sell-crop'>
+                  Sell Crop{" "}
+                  <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
+                </Link>
+                </Nav.Link>
+                : null
+              }
+               {currentUser&&currentUser.type=='Trader'?
+                <Nav.Link>
+                <Link class="nav-link" to='/give-add'>
+                  Give Add{" "}
+                  <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
+                </Link>
+                </Nav.Link>
+                : null
+              }
 
               {!currentUser ? (
                 <Nav.Link>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { Home, Error, About, Login, Signup, PrivateRoute,Mandi } from "./pages";
+import { Home, Error, About, Login, Signup, PrivateRoute,Mandi,Adv,SellCrop } from "./pages";
 import { Navbar, Footer } from "./components";
 
 function App() {
@@ -27,6 +27,12 @@ function App() {
 
         <Route exact path="/mandi">
           <Mandi/>
+        </Route>
+        <Route exact path="/sell-crop">
+          <SellCrop/>
+        </Route>
+        <Route exact path="/give-add">
+          <Adv/>
         </Route>
 
         <Route path="*">
