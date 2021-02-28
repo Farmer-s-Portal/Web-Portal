@@ -36,14 +36,17 @@ font-size: large;
     border-radius: 30px;
     /* text-decoration: underline; */
   }
+  .back-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 `;
   return (
     <Warpper>
       <Row>
-        <Col className="text-center">
+        <Col  className="text-center back-shadow">
           <h3>Updates</h3>
         </Col>
-        <Col xs={6} className="shadow">
+        <Col md={6} xs={11} className="back-shadow">
         <Carousel>
           <Carousel.Item>
             <img
@@ -52,10 +55,10 @@ font-size: large;
               alt="First slide"
               style={{height:"300px"}}
             />
-            <Carousel.Caption>
+            {/* <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
+            </Carousel.Caption> */}
           </Carousel.Item>
           <Carousel.Item>
             <img
@@ -65,10 +68,10 @@ font-size: large;
               style={{height:"300px"}}
             />
 
-            <Carousel.Caption>
+            {/* <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
+            </Carousel.Caption> */}
           </Carousel.Item>
           <Carousel.Item>
             <img
@@ -78,10 +81,10 @@ font-size: large;
               style={{height:"300px"}}
             />
 
-            <Carousel.Caption>
+            {/* <Carousel.Caption>
               <h3>Third slide label</h3>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
+            </Carousel.Caption> */}
           </Carousel.Item>
         </Carousel>
         <br></br>
@@ -111,7 +114,7 @@ font-size: large;
             <li>Confirm your registration by the otp sent to your mobile.</li>
           </ol>
         </Col>
-        <Col className="text-center">
+        <Col className="text-center back-shadow">
           <h3>Important Links</h3>
         </Col>
       </Row>
