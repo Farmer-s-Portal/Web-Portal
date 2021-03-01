@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import { UserProvider } from "./contexts/user_context";
 import { ProductsProvider } from "./contexts/product_context";
+import {CropProvider} from "./contexts/crop_context";
 
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,9 +15,11 @@ ReactDOM.render(
   <Router>
     <UserProvider>
       <ProductsProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
+        <CropProvider>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </CropProvider>
       </ProductsProvider>
     </UserProvider>
   </Router>,
