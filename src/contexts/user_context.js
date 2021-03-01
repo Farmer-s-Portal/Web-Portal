@@ -61,7 +61,7 @@ export const UserProvider = ({ children }) => {
                 type: formVals.type,
               })
               .then(function () {
-                fire.collection
+                fire.collection('users')
                   .doc(result.user.uid)
                   .get()
                   .then(function (res) {

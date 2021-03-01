@@ -30,11 +30,11 @@ const Signup = () => {
         name: nameRef.current.value + " " + lnameRef.current.value,
         address:
           add1Ref.current.value +
-          " " +
+          ", " +
           add2Ref.current.value +
-          " " +
+          ", " +
           cityRef.current.value +
-          " " +
+          ", " +
           zipRef.current.value,
         aadhar: anumRef.current.value,
         type: stateRef.current.value,
