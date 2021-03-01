@@ -14,16 +14,19 @@ export const UserProvider = ({ children }) => {
   const signup = async (formVals) => {
     console.log(formVals.number);
 
-    const userRef = fire.collection("users");
-    const snapshot = await userRef.where("phone", "==", formVals.number).get();
+    const res = await fire
+      .collection("users")
+      .where("phone", "==", formVals.number)
+      .get();
 
-    console.log("signup fn in context");
-    console.log("snapshot", snapshot);
-    if (snapshot) {
-      // alert show krke login p redirect krne ki functionality
+    console.log("res data", res.docs);
+    if (res.docs.length > 0) {
       alert("User Already Exists");
       history.push("/login");
+      return;
     }
+
+    console.log("signup fn in context");
 
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
@@ -47,12 +50,6 @@ export const UserProvider = ({ children }) => {
 
         e.confirm(code)
           .then(function (result) {
-            console.log("adding to db");
-            setCurrentUser(result.user);
-            localStorage.setItem("user", JSON.stringify(result.user));
-            console.log("user123", result.user);
-            console.log("user12", result.user.uid);
-
             fire
               .collection("users")
               .doc(result.user.uid)
@@ -64,7 +61,13 @@ export const UserProvider = ({ children }) => {
                 type: formVals.type,
               })
               .then(function () {
-                console.log("123");
+                fire.collection
+                  .doc(result.user.uid)
+                  .get()
+                  .then(function (res) {
+                    setCurrentUser(res.data());
+                    localStorage.setItem("user", JSON.stringify(res.data()));
+                  });
               });
           })
           .catch((err) => {
@@ -74,12 +77,12 @@ export const UserProvider = ({ children }) => {
 
     console.log("after everything");
   };
-  
-  const login= async(number)=>{
-    number="+91"+number
+
+  const login = async (number) => {
+    number = "+91" + number;
     const userRef = fire.collection("users");
     const snapshot = await userRef.where("phone", "==", number).get();
-   
+
     if (!snapshot) {
       // alert show krke login p redirect krne ki functionality
       alert("User doesn't Exists / invalid phone number");
@@ -107,17 +110,20 @@ export const UserProvider = ({ children }) => {
 
         e.confirm(code)
           .then(function (result) {
-            console.log("adding to db");
-            setCurrentUser(result.user);
-            localStorage.setItem("user", JSON.stringify(result.user));
-            console.log("user123", result.user);
-            console.log("user12", result.user.uid);
+            fire
+              .collection("users")
+              .doc(result.user.uid)
+              .get()
+              .then(function (res) {
+                setCurrentUser(res.data());
+                localStorage.setItem("user", JSON.stringify(res.data()));
+              });
           })
           .catch((err) => {
             console.log("error", err);
           });
-        })
-  }
+      });
+  };
   const logout = async () => {
     await firebase
       .auth()
@@ -149,7 +155,7 @@ export const UserProvider = ({ children }) => {
     setTrue,
     setFalse,
     isFarmer,
-    login
+    login,
     // updateDb
   };
 

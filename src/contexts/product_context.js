@@ -92,28 +92,23 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     console.log("use effect");
-    console.log("start loading");
     dispatch({ type: "SET_LOADING" });
     fetchMandiData("https://mandi-details-api.herokuapp.com/api").then(
       function (data) {
-        console.log("data");
+        // console.log("data",);
         const locations = [
           ...new Set(
             data.map((item) => item.marketCenter.split(",").pop().trim())
           ),
-        ];
-        locations.sort();
-        console.log("locations: ", locations);
+        ].sort();
         const commodities = [
-          ...new Set(data.map((item) => item.commodity.trim())),
-        ];
-        commodities.sort();
+          ...new Set(data.map((item) => item.commodity)),
+        ].sort();
         dispatch({
           type: "GET_MANDIS",
           payload: [data, locations, commodities],
         });
         console.log(state.mandis);
-        console.log("stop loading");
         dispatch({ type: "STOP_LOADING" });
       }
     );

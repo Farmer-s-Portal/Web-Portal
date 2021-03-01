@@ -7,14 +7,14 @@ import { useUserContext } from "../contexts/user_context";
 const Login = () => {
   const [mobile, setMobile] = useState("");
 
-  const history=useHistory();
- 
+  const history = useHistory();
+
   const [disableButton, setDisableButton] = useState(true);
   const [error, setError] = useState({
     show: false,
     msg: "",
   });
-  const {login,currentUser}=useUserContext();
+  const { login, currentUser } = useUserContext();
   const handleMobileInput = (e) => {
     let input = e.target.value;
     setMobile(input);
@@ -27,22 +27,18 @@ const Login = () => {
     }
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-      setDisableButton(true);
-      await login(mobile);
-      history.push('/')
 
-    }
-
+    setDisableButton(true);
+    await login(mobile);
+    history.push("/");
+  };
 
   const resetHandler = (e) => {
     e.preventDefault();
     setMobile("");
-  
+
     setDisableButton(true);
     setError({
       show: false,
@@ -70,7 +66,8 @@ const Login = () => {
                       <InputGroup.Prepend>
                         <InputGroup.Text>+91</InputGroup.Text>
                       </InputGroup.Prepend>
-                      <Form.Control id="recaptcha-container"
+                      <Form.Control
+                        id="recaptcha-container"
                         name="phone"
                         placeholder="Phone Number"
                         value={mobile}
@@ -83,9 +80,8 @@ const Login = () => {
                   </Form.Group>
                 </Col>
               </Row>
-             
               <Button variant="success" type="submit" disabled={disableButton}>
-               Send OTP
+                Send OTP
               </Button>{" "}
               <Button variant="danger" type="reset" onClick={resetHandler}>
                 Reset
@@ -142,5 +138,5 @@ const Wrapper = styled.section`
   input[type="number"] {
     -moz-appearance: textfield;
   }
-`
+`;
 export default Login;
