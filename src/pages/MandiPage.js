@@ -37,7 +37,7 @@ const MandiPage = () => {
   return (
     <Wrapper className="position-relative">
       <FormGroup
-        style={{ marginBottom: "20px" }}
+        style={{ marginBottom: "20px", width: "70%" }}
         className="shadow p-2 position-sticky filter-form"
       >
         <Form.Label id="area" className="m-2 p-2">
