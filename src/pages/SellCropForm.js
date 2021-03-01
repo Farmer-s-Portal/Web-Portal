@@ -13,7 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function SellCropForm() {
   const [validated, setValidated] = useState(false);
   const {currentUser} = useUserContext();
-  const {createCrop} = useCropContext();
+  const {createCrop, allCrops} = useCropContext();
+  const history = useHistory();
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -28,6 +29,7 @@ function SellCropForm() {
       try {
         await createCrop(values);
         alert("Crop Posted");
+        history.push('/all-crops');
       } catch (error) {
         alert("Error in Posting Crop");
         console.log("Error", error);
@@ -84,7 +86,7 @@ function SellCropForm() {
               </InputGroup.Prepend>
               <Form.Control
                 type="text"
-                name="quantity"
+                name="price"
                 aria-describedby="inputGroupPrepend"
                 defaultValue="10,000"
                 required

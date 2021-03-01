@@ -8,6 +8,7 @@ import {
   Login,
   Signup,
   PrivateRoute,
+  AllCrops,
   Mandi,
   Adv,
   SellCrop,
@@ -44,7 +45,9 @@ function App() {
         <Route exact path="/give-add">
           <Adv />
         </Route>
-
+        <Route exact path="/all-crops">
+          <AllCrops />
+        </Route>
         <Route path="*">
           <Error />
         </Route>
