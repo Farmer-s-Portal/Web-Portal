@@ -38,7 +38,7 @@ const MandiPage = () => {
     <Wrapper className="position-relative">
       <FormGroup
         style={{ marginBottom: "20px", width: "70%" }}
-        className="back-shadow p-2 position-sticky filter-form"
+        className="shadow p-2 position-sticky filter-form"
       >
         <Form.Label id="area" className="m-2 p-2">
           <b>State</b>
@@ -46,7 +46,7 @@ const MandiPage = () => {
         <Form.Control
           as="select"
           name="area"
-          className="m-2"
+          className="m-2 drop-glow"
           value={area}
           onChange={setarea}
         >
@@ -61,7 +61,7 @@ const MandiPage = () => {
         <Form.Control
           as="select"
           name="comm"
-          className="m-2"
+          className="m-2 drop-glow"
           value={scommodity}
           onChange={setCommodity}
         >
@@ -82,7 +82,7 @@ const MandiPage = () => {
             if ((marketCenter.split(",").pop() == area || area == "all") &&(commodity == scommodity || scommodity == "all"))
             return (
               <div style={{marginBottom:'15px'}} className="col-lg-4 col-md-6 col-sm-12">
-                <Card className="back-shadow">
+                <Card className="shadow">
                   <div className="rating position-absolute p-2">
                     <FontAwesomeIcon
                       icon={faStar}
