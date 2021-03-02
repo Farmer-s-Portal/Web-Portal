@@ -58,8 +58,7 @@ export const UserProvider = ({ children }) => {
                 phone: formVals.number,
                 aadharNumber: formVals.aadhar,
                 address: formVals.address,
-                type: formVals.type,
-                posts:[]
+                type: formVals.type
               })
               .then(function () {
                 fire.collection('users')
