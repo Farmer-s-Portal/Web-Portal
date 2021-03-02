@@ -59,14 +59,17 @@ export const UserProvider = ({ children }) => {
                 aadharNumber: formVals.aadhar,
                 address: formVals.address,
                 type: formVals.type,
+                posts:[]
               })
               .then(function () {
                 fire.collection('users')
                   .doc(result.user.uid)
                   .get()
                   .then(function (res) {
-                    setCurrentUser(res.data());
-                    localStorage.setItem("user", JSON.stringify(res.data()));
+                    let temp=res.data();
+                    temp={...temp,uid:result.user.uid}
+                    setCurrentUser(temp);
+                    localStorage.setItem("user", JSON.stringify(temp));
                   });
               });
           })
@@ -115,8 +118,10 @@ export const UserProvider = ({ children }) => {
               .doc(result.user.uid)
               .get()
               .then(function (res) {
-                setCurrentUser(res.data());
-                localStorage.setItem("user", JSON.stringify(res.data()));
+                let temp=res.data();
+                temp={...temp,uid:result.user.uid}
+                setCurrentUser(temp);
+                localStorage.setItem("user", JSON.stringify(temp));
               });
           })
           .catch((err) => {
