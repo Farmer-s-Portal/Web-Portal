@@ -38,7 +38,7 @@ const MandiPage = () => {
     <Wrapper className="position-relative">
       <FormGroup
         style={{ marginBottom: "20px", width: "70%" }}
-        className="shadow p-2 position-sticky filter-form"
+        className="back-shadow p-2 position-sticky filter-form"
       >
         <Form.Label id="area" className="m-2 p-2">
           <b>State</b>
@@ -81,8 +81,8 @@ const MandiPage = () => {
             } = mandi;
             if ((marketCenter.split(",").pop() == area || area == "all") &&(commodity == scommodity || scommodity == "all"))
             return (
-              <div className="col-lg-3 col-md-4 col-sm-6 col-xsm-12 m-4">
-                <Card style={{ width: "18rem" }} className="shadow">
+              <div style={{marginBottom:'15px'}} className="col-lg-4 col-md-6 col-sm-12">
+                <Card className="back-shadow">
                   <div className="rating position-absolute p-2">
                     <FontAwesomeIcon
                       icon={faStar}
