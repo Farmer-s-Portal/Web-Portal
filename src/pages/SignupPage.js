@@ -7,7 +7,11 @@ import SignUp from "../components/Signup";
 function SignupPage() {
   return (
     <Wrapper>
-      <SignUp />
+      <div className='container'>
+        <div style={{background:'white',marginBottom:'40px',marginTop:'20px',borderRadius:'25px',padding:'20px'}}>
+          <SignUp />
+        </div>  
+      </div>
     </Wrapper>
   );
 }
