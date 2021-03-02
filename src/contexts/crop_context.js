@@ -15,8 +15,18 @@ export const CropProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initalState);
     const getAllCrops = async ()=>{
         let temp = [];
-        (await fire.collection('crops').get()).docs.forEach(crop => {
-            temp.push(crop.data());
+        const all=await fire.collection('crops').get()
+        all.docs.forEach(async crop => {
+            const res=await crop.data().user.get()
+            
+                 console.log("res",res.data())
+
+                 let temp2=crop.data();
+                 temp2={...temp2,user:res.data()}
+                 temp.push(temp2);
+         
+             
+           
         });
         return temp;
     }

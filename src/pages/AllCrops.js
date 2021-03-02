@@ -12,6 +12,8 @@ import {
 
 const AllCrops = () => {
     const {allCrops} = useCropContext();
+
+    console.log("all",allCrops)
     console.log(allCrops);
     return (
         <div className="row">
@@ -28,7 +30,7 @@ const AllCrops = () => {
                                 icon={faUser}
                                 className="mr-3 text-primary"
                             ></FontAwesomeIcon>
-                            {crop.userId}
+                            {crop.user.name}
                             </ListGroupItem>
                             <ListGroupItem>
                             <FontAwesomeIcon
