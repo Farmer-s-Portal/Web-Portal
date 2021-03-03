@@ -4,36 +4,33 @@ import firebase, { fire } from "../firebase";
 import reducer from '../reducers/crops_reducer';
 import { useUserContext } from "./user_context";
 
-const CropContext = React.createContext();
 
 const initalState = {
-    allCrops: []
+    allCrops: [{comm:"kela", price:"500",quantity:"100",city:"Hyderabad",state:"AP",zip:"530065",user:{name:"Dagar"}}]
+    // allCrops: []
 }
+const CropContext = React.createContext();
 
 export const CropProvider = ({children}) => {
     const {currentUser} = useUserContext();
     const [state, dispatch] = useReducer(reducer, initalState);
-    const getAllCrops = async ()=>{
+    const getAllCrops = ()=>{
         let temp = [];
-        const all=await fire.collection('crops').get()
-        all.docs.forEach(async crop => {
-            const res=await crop.data().user.get()
-            
-                 console.log("res",res.data())
-
-                 let temp2=crop.data();
-                 temp2={...temp2,user:res.data()}
-                 temp.push(temp2);
-         
-             
-           
+        fire.collection('crops').get().then(function(data){
+            data.docs.forEach(crop => {
+                crop.data().user.get().then(function(res){
+                    console.log("res",res.data())
+                    let temp2=crop.data();
+                    temp2={...temp2,user:res.data()}
+                    temp.push(temp2);
+                })
+            })
         });
         return temp;
     }
-    useEffect(() => {
-        getAllCrops().then(function(data){
-            dispatch({type:"SET_CROPS", payload: data});
-        })
+    useEffect(async() => {
+        let data = await getAllCrops();
+        dispatch({type:"SET_CROPS", payload: data});
     },[]);
     const createCrop = async (values) => {
         console.log(values);

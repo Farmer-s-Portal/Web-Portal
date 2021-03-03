@@ -25,7 +25,6 @@ function SellCropForm() {
     else{
       const data = new FormData(event.target);
       let values = Object.fromEntries(data.entries());
-      values.userId = currentUser.uid;
       try {
         await createCrop(values);
         alert("Crop Posted");

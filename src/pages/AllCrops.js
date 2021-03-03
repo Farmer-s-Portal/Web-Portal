@@ -12,9 +12,8 @@ import {
 
 const AllCrops = () => {
     const {allCrops} = useCropContext();
-
-    console.log("all",allCrops)
-    console.log(allCrops);
+    console.log("all crops",allCrops);
+    console.log("First Crop",allCrops[0]);
     return (
         <div className="row">
             {allCrops.map(crop => {
