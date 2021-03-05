@@ -8,13 +8,13 @@ import {
   Login,
   Signup,
   PrivateRoute,
-  AllCrops,
+  MyAllCrops,
   Mandi,
   Adv,
   SellCrop,
 } from "./pages";
 import { Navbar, Footer } from "./components";
-
+import "./App.css"
 function App() {
   return (
     <>
@@ -45,8 +45,8 @@ function App() {
         <Route exact path="/give-add">
           <Adv />
         </Route>
-        <Route exact path="/all-crops">
-          <AllCrops />
+        <Route exact path="/my-all-crops">
+          <MyAllCrops />
         </Route>
         <Route path="*">
           <Error />

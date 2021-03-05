@@ -94,14 +94,14 @@ export const ProductsProvider = ({ children }) => {
     console.log("use effect");
     dispatch({ type: "SET_LOADING" });
     fetchMandiData("https://mandi-details-api.herokuapp.com/api").then(
-      function (data) {
-        // console.log("data",);
-        const locations = [
+      async function (data) {
+        console.log("data",data.length);
+         const locations = await [
           ...new Set(
             data.map((item) => item.marketCenter.split(",").pop().trim())
           ),
         ].sort();
-        const commodities = [
+        const commodities = await [
           ...new Set(data.map((item) => item.commodity)),
         ].sort();
         dispatch({

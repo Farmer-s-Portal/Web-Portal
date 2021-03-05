@@ -2,7 +2,6 @@ const crops_reducer = (state, action) => {
   if (action.type === "SET_CROPS") {
     return { ...state, allCrops: action.payload };
   }
-
   if (action.type === "SET_LOADING") {
     return { ...state, loading: true };
   }

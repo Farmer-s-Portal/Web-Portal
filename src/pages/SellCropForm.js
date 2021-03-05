@@ -27,14 +27,27 @@ function SellCropForm() {
       let values = Object.fromEntries(data.entries());
       try {
         await createCrop(values);
-        alert("Crop Posted");
-        history.push('/all-crops');
+        history.push('/my-all-crops');
       } catch (error) {
         alert("Error in Posting Crop");
         console.log("Error", error);
       }
     }
   };
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+  let mx = mm, yyyyx = yyyy;
+  console.log(++mx);
+  if(mx < 10)
+    mx = '0' + mx;
+  if(mx == '13')
+  {
+    mx = '01';
+    yyyyx++;
+    yyyyx = '' + yyyyx;
+  }
   const {commodities} = useProductsContext();
   const Warpper = styled.p`
   text-align: center;
@@ -130,6 +143,7 @@ function SellCropForm() {
                 type="text"
                 aria-describedby="inputGroupPrepend"
                 defaultValue={currentUser.phone.split('+91').pop()}
+                name="number"
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -139,7 +153,12 @@ function SellCropForm() {
           </Form.Group>
           <Col>
             <Form.Label>Email (optional)</Form.Label>
-            <Form.Control type="text"></Form.Control>
+            <Form.Control type="text" name="email"></Form.Control>
+          </Col>
+          <Col>
+              <Form.Label>Expected Harvest Date</Form.Label>
+              <Form.Control type="date" name="date" min={yyyy+'-'+mm+'-'+dd} max={yyyyx+'-'+mx+'-'+dd}></Form.Control>
+              <Form.Text id="passwordHelpBlock" className="text-danger"><b>*Select if not harvested.</b></Form.Text>
           </Col>
         </Row>
         <Row>

@@ -16,7 +16,7 @@ import {
 
 function Footer() {
   return (
-    <Wrapper className="bg-light shadow-lg">
+    <Wrapper className="bg-light" id="footer">
       <div className="bg-light p-5">
         <div className="container">
           <span className="m-0 contact-us">
@@ -60,6 +60,7 @@ function Footer() {
 const Wrapper = styled.div`
   text-align: center;
   font-size: 1.2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   .contact-us {
     font-size: 2rem;
   }

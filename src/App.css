@@ -1,0 +1,9 @@
+#root{
+    /* min-height: 100vh; */
+    position: relative;
+}
+#footer{
+    position: relative;
+    /* width: 10vw; */
+    bottom: 0px;
+}

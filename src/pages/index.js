@@ -7,7 +7,7 @@ import PrivateRoute from "./PrivateRoutePage";
 import Mandi from "./MandiPage";
 import SellCrop from "./SellCropForm";
 import Adv from "./TraderAdd";
-import AllCrops from './AllCrops';
+import MyAllCrops from './MyAllCrops';
 
 export {
   Home,
@@ -16,7 +16,7 @@ export {
   Login,
   Signup,
   PrivateRoute,
-  AllCrops,
+  MyAllCrops,
   Mandi,
   Adv,
   SellCrop,
