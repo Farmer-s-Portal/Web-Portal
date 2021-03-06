@@ -19,11 +19,14 @@ export const CropProvider = ({ children }) => {
     let temp = [];
     await fire.collection('users').doc(currentUser.uid).get().then(async (data) => {
       let posts = data.data().posts;
+      if(!posts)
+        return;
       for(let i = 0; i < posts.length; i++)
         await posts[i].get().then(async result => {
           await result.data().user.get().then(async user => {
             let t = await result.data();
             t.user = await user.data();
+            t.id = result.ref.id;
             temp.push(t);
           });
         })
@@ -53,8 +56,20 @@ export const CropProvider = ({ children }) => {
       console.log(error);
     }
   };
+  const deleteCrop = async (cropID) => {
+    try{
+      let ref = await fire.collection('crops').doc(cropID);
+      await fire.collection('users').doc(currentUser.uid).update({
+        posts: firebase.firestore.FieldValue.arrayRemove(ref)
+      })
+      await ref.delete();
+    }catch(error){
+      alert("Error in deleting from DB");
+      console.log(error);
+    }
+  }
   return (
-    <CropContext.Provider value={{ ...state, createCrop, getMyAllCrops }}>
+    <CropContext.Provider value={{ ...state, createCrop, getMyAllCrops, deleteCrop}}>
       {children}
     </CropContext.Provider>
   );
