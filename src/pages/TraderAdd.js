@@ -5,11 +5,28 @@ import { Form,Row,Container,Col,Button,InputGroup } from "react-bootstrap";
 
 import {faRupeeSign} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { useProductsContext } from "../contexts/product_context";
+import { useCropContext } from "../contexts/crop_context";
 function TraderAdd() {
+  const history=useHistory();
+  console.log("context", useCropContext())
+  const {createAdv} = useCropContext();
 
   //const {commodities} = useProductsContext();
-  
+  const handleSubmit= async (e)=>{
+    const form = e.currentTarget;
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+    let values = Object.fromEntries(data.entries());
+
+    try {
+      await createAdv(values);
+      history.push('/');
+    } catch (error) {
+      alert("Error in Posting Crop");
+      console.log("Error", error);
+    }
+  }
   const Warpper = styled.p`
   text-align: center;
     form{
@@ -23,7 +40,7 @@ function TraderAdd() {
   `;
   return (
     <Warpper>
-      <Form className='shadow'>
+      <Form className='shadow' onSubmit={handleSubmit} >
         <Form.Row>
           <Form.Group as={Col} md='4'>
             <Form.Label id='comm' className="">
@@ -33,7 +50,7 @@ function TraderAdd() {
               as='Select'
               name='comm'
               className=''
-              required
+              
               >
                  {//commodities.map((comm)=>{
                   // return <option value={comm}>{comm}</option>
