@@ -10,6 +10,7 @@ import {
   faSignOutAlt,
   faUserClock,
   faInfoCircle,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useUserContext } from "../contexts/user_context";
@@ -77,6 +78,13 @@ function NavbarComponent() {
                   <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> About
                 </Link>
               </Nav.Link>
+              {currentUser ? (
+                <Nav.Link>
+                  <Link class="nav-link" to="/profile">
+                    <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> Profile
+                  </Link>
+                </Nav.Link>
+              ) : null}
               {currentUser ? (
                 <Nav.Link>
                   <Link class="nav-link" onClick={handleLogout}>

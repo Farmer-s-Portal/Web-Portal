@@ -8,6 +8,7 @@ import Mandi from "./MandiPage";
 import SellCrop from "./SellCropForm";
 import Adv from "./TraderAdd";
 import MyAllCrops from './MyAllCrops';
+import Profile from './Profile';
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   Mandi,
   Adv,
   SellCrop,
+  Profile,
 };

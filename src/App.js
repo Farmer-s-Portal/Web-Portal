@@ -12,6 +12,7 @@ import {
   Mandi,
   Adv,
   SellCrop,
+  Profile,
 } from "./pages";
 import { Navbar, Footer } from "./components";
 import "./App.css"
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/give-add">
           <Adv />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
         </Route>
         <Route exact path="/my-all-crops">
           <MyAllCrops />
