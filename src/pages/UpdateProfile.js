@@ -7,7 +7,7 @@ function ProfilePage(){
     var type = isFarmer ? "Farmer" : "Trader";
     return (
         <div className='container'>
-            <div className='pro-back' style={{textAlign:'left',width:'80%',margin:'20px auto',padding:'20px'}}>
+            <div className='pro-back shadow' style={{textAlign:'left',width:'80%',margin:'20px auto',padding:'20px'}}>
             <h1 style={{color:'#5c342f'}}>Account Profile</h1>
             <hr></hr>
             <Form>
