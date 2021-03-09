@@ -68,14 +68,6 @@ function ProfilePage(){
             />
             </Col>
             </Form.Group>
-
-            <Form.Group as={Row} controlId="formGridState">
-                      <Form.Label column sm="2">Type</Form.Label>
-                      <Col sm="10">
-
-                      </Col>
-
-                    </Form.Group>
             </Form>
             <br></br>
             <Button href="/profile/update" variant='outline-success'>Update</Button>
