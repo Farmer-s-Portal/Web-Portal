@@ -13,6 +13,7 @@ import {
   Adv,
   SellCrop,
   Profile,
+  UpdateProfile,
 } from "./pages";
 import { Navbar, Footer } from "./components";
 import "./App.css"
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/profile/update">
+          <UpdateProfile />
         </Route>
         <Route exact path="/my-all-crops">
           <MyAllCrops />

@@ -9,9 +9,10 @@ import SellCrop from "./SellCropForm";
 import Adv from "./TraderAdd";
 import MyAllCrops from './MyAllCrops';
 import Profile from './Profile';
-
+import UpdateProfile from './UpdateProfile'
 export {
   Home,
+  UpdateProfile,
   About,
   Error,
   Login,

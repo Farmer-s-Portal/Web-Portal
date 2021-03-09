@@ -2,7 +2,6 @@ import React, {useRef,useState} from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { useUserContext } from "../contexts/user_context";
 import {Button} from 'react-bootstrap'
-
 function ProfilePage(){
     const {currentUser,isFarmer}=useUserContext();
     var type = isFarmer ? "Farmer" : "Trader";
@@ -21,7 +20,6 @@ function ProfilePage(){
             style={{color:'black'}}
             type="text"
             defaultValue={currentUser.name}
-            disabled
             />
             </Col>
             </Form.Group>
@@ -35,7 +33,6 @@ function ProfilePage(){
             type="text"
             style={{color:'black'}}
             defaultValue={currentUser.phone}
-            disabled
             />
             </Col>
             </Form.Group>
@@ -50,7 +47,6 @@ function ProfilePage(){
             rows={3}
             style={{color:'black'}}
             defaultValue={currentUser.address}
-            disabled
             />
             </Col>
             </Form.Group>
@@ -63,24 +59,20 @@ function ProfilePage(){
             <Form.Control
             type="text"
             style={{color:'black'}}
-            defaultValue={currentUser.type}
             disabled
+            defaultValue={currentUser.type}
             />
+            <Form.Text className="text-muted">
+      You can't change user type
+    </Form.Text>
             </Col>
             </Form.Group>
-
-            <Form.Group as={Row} controlId="formGridState">
-                      <Form.Label column sm="2">Type</Form.Label>
-                      <Col sm="10">
-
-                      </Col>
-
-                    </Form.Group>
             </Form>
             <br></br>
-            <Button href="/profile/update" variant='outline-success'>Update</Button>
+            <Button  variant='outline-success'>Save Changes</Button>
+            <Button href="/profile" style={{float:'right'}} variant='danger'>Discard Changes</Button>
             <hr></hr>
-            <h3 style={{color:'#5c342f'}}>Recent posts</h3>
+            {/* <h3 style={{color:'#5c342f'}}>Recent posts</h3> */}
             </div>
         </div>
     );
