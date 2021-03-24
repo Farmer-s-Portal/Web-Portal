@@ -1,0 +1,1 @@
+window.addEventListener && window.addEventListener("message", function(event){if (event.origin === "https://dag123.youcanbook.me"){document.getElementById("ycbmiframedag123").style.height = event.data + "px";}}, false);

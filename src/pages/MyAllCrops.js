@@ -44,7 +44,6 @@ const MyAllCrops = () => {
               <Dropdown.Toggle className="position-absolute " style={{top:"10px", right:"10px"}} variant="light" id="dropdown-basic">
               </Dropdown.Toggle>
               <Dropdown.Menu className="border-0 p-0" style={{borderRadius:"0", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
-                {/* <Dropdown.Item className="p-2">Delete</Dropdown.Item> */}
                 <Button variant="light" className="p-2" onClick={deleteClick}>Delete</Button>
               </Dropdown.Menu>
             </Dropdown>
