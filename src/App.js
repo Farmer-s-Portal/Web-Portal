@@ -14,6 +14,7 @@ import {
   SellCrop,
   Profile,
   UpdateProfile,
+  SingleCrop
 } from "./pages";
 import { Navbar, Footer } from "./components";
 import "./App.css"
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route exact path="/my-all-crops">
           <MyAllCrops />
+        </Route>
+        <Route exact path="/crop/:id" component={SingleCrop}>
+          <SingleCrop />
         </Route>
         <Route path="*">
           <Error />

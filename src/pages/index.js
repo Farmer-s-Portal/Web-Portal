@@ -10,8 +10,10 @@ import Adv from "./TraderAdd";
 import MyAllCrops from './MyAllCrops';
 import Profile from './Profile';
 import UpdateProfile from './UpdateProfile'
+import SingleCrop from './SingleCrop'
 export {
   Home,
+  SingleCrop,
   UpdateProfile,
   About,
   Error,
