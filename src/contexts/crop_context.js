@@ -36,6 +36,7 @@ export const CropProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    if(currentUser!=null)
     getMyAllCrops();
   }, []);
 
