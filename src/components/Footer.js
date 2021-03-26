@@ -51,6 +51,10 @@ function Footer() {
               ></FontAwesomeIcon>
             </a>
           </div>
+          <hr></hr>
+          <div style={{textAlign:'center'}}>
+            <a style={{textDecoration:'none'}} href="/about">About</a>
+          </div>
         </div>
       </div>
     </Wrapper>

@@ -11,6 +11,7 @@ import {
   faUserClock,
   faInfoCircle,
   faUser,
+  faCommentsDollar,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useUserContext } from "../contexts/user_context";
@@ -73,11 +74,22 @@ function NavbarComponent() {
                   Prices
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link class="nav-link" to="/about">
-                  <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> About
-                </Link>
-              </Nav.Link>
+              {currentUser && currentUser.type == "Farmer" ? (
+                <Nav.Link>
+                  <Link class="nav-link" to="/sell-crop">
+                  <FontAwesomeIcon icon={faCommentsDollar}></FontAwesomeIcon>
+                    Sell Crop{" "}
+                  </Link>
+                </Nav.Link>
+              ) : null}
+              {currentUser && currentUser.type == "Trader" ? (
+                <Nav.Link>
+                  <Link class="nav-link" to="/give-add">
+                  <FontAwesomeIcon icon={faCommentsDollar}></FontAwesomeIcon>
+                    Give Add{" "}
+                  </Link>
+                </Nav.Link>
+              ) : null}
               {currentUser ? (
                 <Nav.Link>
                   <Link class="nav-link" to="/profile">
@@ -85,6 +97,11 @@ function NavbarComponent() {
                   </Link>
                 </Nav.Link>
               ) : null}
+              {/* <Nav.Link>
+                <Link class="nav-link" to="/about">
+                  <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> About
+                </Link>
+              </Nav.Link> */}
               {currentUser ? (
                 <Nav.Link>
                   <Link class="nav-link" onClick={handleLogout}>
@@ -118,23 +135,6 @@ function NavbarComponent() {
                   </NavDropdown>
                 </Nav.Link>
               )}
-              {currentUser && currentUser.type == "Farmer" ? (
-                <Nav.Link>
-                  <Link class="nav-link" to="/sell-crop">
-                    Sell Crop{" "}
-                    <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
-                  </Link>
-                </Nav.Link>
-              ) : null}
-              {currentUser && currentUser.type == "Trader" ? (
-                <Nav.Link>
-                  <Link class="nav-link" to="/give-add">
-                    Give Add{" "}
-                    <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
-                  </Link>
-                </Nav.Link>
-              ) : null}
-
               {!currentUser ? (
                 <Nav.Link>
                   <Link class="nav-link" to="/login">
