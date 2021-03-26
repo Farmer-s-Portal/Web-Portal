@@ -89,6 +89,7 @@ const HomePage = () => {
             </Carousel.Item>
           </Carousel>
           <br></br>
+          <p style={{textAlign:'justify'}}>
           Farmers' Portal is a non-profitable system which helps the farmer in
           carrying out his day-to-day activities online. As now-a-days
           everything is shifting on online platform which is making our life
@@ -98,7 +99,10 @@ const HomePage = () => {
           capital income and farmers often have great difficulties while selling
           and finding best price for their crops. As in current Mandi system,
           farmers have to wait in long queues in early mornings for selling
-          their crops at a mediocre rate.<br></br>
+          their crops at a mediocre rate.
+          </p>
+          <br></br>
+          <p style={{textAlign:'justify'}}>
           This portal provides following features for the farmers:
           <ol>
             <li>
@@ -132,6 +136,7 @@ const HomePage = () => {
             <li>Choose your category i.e. farmer or trader.</li>
             <li>Confirm your registration by the otp sent to your mobile.</li>
           </ol>
+          </p>
         </Col>
         <Col className="text-center back-shadow">
           <h3>Important Links</h3>
