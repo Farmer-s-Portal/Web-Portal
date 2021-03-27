@@ -1,16 +1,7 @@
 import React from "react";
-import { useProductsContext } from "../contexts/product_context";
-import Hero from "../components/Hero";
 import { Col, Row, Carousel } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkerAlt,
-  faStore,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 const HomePage = () => {
-  const { area, setarea, mandis } = useProductsContext();
 
   const Warpper = styled.p`
     padding-top: 30px;

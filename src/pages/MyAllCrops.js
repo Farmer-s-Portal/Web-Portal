@@ -17,6 +17,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useCropContext } from "../contexts/crop_context";
+import { Link } from "react-router-dom";
 
 const MyAllCrops = () => {
   const { loading, allCrops, deleteCrop} = useCropContext();
@@ -48,7 +49,7 @@ const MyAllCrops = () => {
               </Dropdown.Menu>
             </Dropdown>
             <Card.Body>
-              <Card.Title>{crop.comm}</Card.Title>
+              <Link to={"/crop/"+crop.id}><Card.Title>{crop.comm}</Card.Title></Link>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroupItem>
