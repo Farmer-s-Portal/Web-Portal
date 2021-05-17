@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
+import {ProductsProvider} from './contexts/product_context';
+import {AdvProvider} from "./contexts/adv_context"
 import {
   Home,
   Error,
@@ -40,13 +41,21 @@ function App() {
         </PrivateRoute>
 
         <Route exact path="/mandi">
-          <Mandi />
+          <ProductsProvider>
+            <Mandi />
+          </ProductsProvider>
         </Route>
         <Route exact path="/sell-crop">
-          <SellCrop />
+          <ProductsProvider>
+            <SellCrop />
+          </ProductsProvider>
         </Route>
         <Route exact path="/give-add">
-          <Adv />
+          <ProductsProvider>
+            <AdvProvider>
+              <Adv />
+            </AdvProvider>
+          </ProductsProvider>
         </Route>
         <Route exact path="/profile">
           <Profile />

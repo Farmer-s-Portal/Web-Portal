@@ -51,8 +51,8 @@ const MandiPage = () => {
           onChange={setarea}
         >
           <option value="all">Nearby</option>
-          {locations.map((loc) => {
-            return <option value={loc}>{loc}</option>;
+          {locations.map((loc, index) => {
+            return <option value={loc} key={index}>{loc}</option>;
           })}
         </Form.Control>
         <Form.Label id="comm" className="m-2 p-2">
@@ -66,8 +66,8 @@ const MandiPage = () => {
           onChange={setCommodity}
         >
           <option value="all">All</option>
-          {commodities.map((comm) => {
-            return <option value={comm}>{comm}</option>;
+          {commodities.map((comm, index) => {
+            return <option value={comm} key={index}>{comm}</option>;
           })}
         </Form.Control>
       </FormGroup>
@@ -81,7 +81,7 @@ const MandiPage = () => {
             } = mandi;
             if ((marketCenter.split(",").pop() == area || area == "all") &&(commodity == scommodity || scommodity == "all"))
             return (
-              <div style={{marginBottom:'15px'}} className="col-lg-4 col-md-6 col-sm-12">
+              <div style={{marginBottom:'15px'}} key={index} className="col-lg-4 col-md-6 col-sm-12">
                 <Card className="shadow">
                   <div className="rating position-absolute p-2">
                     <FontAwesomeIcon

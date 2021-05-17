@@ -1,17 +1,18 @@
 import React from "react";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import styled from "styled-components";
-import { Form,Row,Container,Col,Button,InputGroup } from "react-bootstrap";
+import { Form,Col,Button,InputGroup } from "react-bootstrap";
 
 import {faRupeeSign} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { useCropContext } from "../contexts/crop_context";
+import {useProductsContext} from '../contexts/product_context'
+import { useAdvContext } from "../contexts/adv_context";
+import { useUserContext } from "../contexts/user_context";
 function TraderAdd() {
   const history=useHistory();
-  console.log("context", useCropContext())
-  const {createAdv} = useCropContext();
-
-  //const {commodities} = useProductsContext();
+  const {createAdv} = useAdvContext();
+  const {currentUser} = useUserContext();
+  const {commodities} = useProductsContext();
   const handleSubmit= async (e)=>{
     const form = e.currentTarget;
     e.preventDefault();
@@ -50,11 +51,11 @@ function TraderAdd() {
               as='Select'
               name='comm'
               className=''
-              
+              required
               >
-                 {//commodities.map((comm)=>{
-                  // return <option value={comm}>{comm}</option>
-               //  })
+                 {commodities.map((comm, index)=>{
+                  return <option value={comm} key={index}>{comm}</option>
+                })
               }
               </Form.Control>
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -79,8 +80,8 @@ function TraderAdd() {
                 type="Range"
                 name="price"
                 aria-describedby="inputGroupPrepend"
-                min={9000}
-                max={10000}
+                min={1000}
+                max={5000}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -95,6 +96,7 @@ function TraderAdd() {
             <Form.Control
               as="select"
               name='quality'
+              required
               className=''
             >
               <option value='A'>A-Grade</option>
@@ -107,20 +109,20 @@ function TraderAdd() {
           </Form.Group>
           <Form.Group as={Col} md='4'>
               <Form.Label>Required Before</Form.Label>
-              <Form.Control type='date' />
+              <Form.Control type='date' required/>
           </Form.Group>
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} md="6" controlId="validationCustom03">
             <Form.Label>City</Form.Label>
-            <Form.Control type="text" placeholder="City" required name="city"/>
+            <Form.Control type="text" placeholder="City" required name="city" required/>
             <Form.Control.Feedback type="invalid">
               Please provide a valid city.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom04">
             <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="State" required name="state"/>
+            <Form.Control type="text" placeholder="State" required name="state" required/>
             <Form.Control.Feedback type="invalid">
               Please provide a valid state.
             </Form.Control.Feedback>
@@ -139,7 +141,8 @@ function TraderAdd() {
             <Form.Control
               name="name"
               type="text"
-              value="e.g. Ramphal"
+              value={currentUser.name}
+              required
               disabled
             />
           </Col>
@@ -152,8 +155,9 @@ function TraderAdd() {
               <Form.Control
                 type="text"
                 aria-describedby="inputGroupPrepend"
-                defaultValue='1234567890'
+                value={currentUser.phone.split('+91').pop()}
                 name="number"
+                disabled
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -174,7 +178,7 @@ function TraderAdd() {
             feedback='You must be agree to all terms and conditions before submitting' />
         </Form.Group>
         <div className="text-center">
-          <Button type='submit' variant='success'>Publish Adv</Button>
+          <Button type='submit' variant='success'>Publish Advertisement</Button>
         </div>
       </Form>
     </Warpper>

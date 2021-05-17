@@ -95,7 +95,6 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: "SET_LOADING" });
     fetchMandiData("https://mandi-details-api.herokuapp.com/api").then(
       async function (data) {
-        // console.log("data",data.length);
          const locations = await [
           ...new Set(
             data.map((item) => item.marketCenter.split(",").pop().trim())

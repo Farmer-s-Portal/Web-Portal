@@ -9,8 +9,8 @@ export const AdvProvider=({children})=> {
    const createAdv = async (values)=>{
     values = { ...values, user: fire.collection("users").doc(currentUser.uid) };
     try {
-        const res = await fire.collection("advs").add(values);
-        const ref = fire.collection("advs").doc(res.id);
+      const res = await fire.collection("advertisements").add(values);
+      const ref = fire.collection("advertisements").doc(res.id);
         const res2 = await fire
           .collection("users")
           .doc(currentUser.uid)
